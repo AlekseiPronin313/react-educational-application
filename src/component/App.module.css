@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 .page {
     display: grid;
     grid-template-areas:
@@ -5,4 +9,9 @@
             'nav main';
     grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 10fr;
+}
+
+.main {
+    grid-area: main;
+    width: 100%;
 }

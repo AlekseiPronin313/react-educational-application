@@ -1,0 +1,12 @@
+.header {
+    max-width: 100%;
+    grid-area: header;
+    background-color: #00BFFF;
+    margin: 0 0 5px;
+}
+
+.img {
+    max-width: 50px;
+    max-height: 50px;
+    padding-left: 10px;
+}
