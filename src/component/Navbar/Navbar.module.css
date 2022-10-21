@@ -1,13 +1,11 @@
 .nav {
-    height: 220px ;
+    height: 500px ;
     grid-area: nav;
-    background-color: #18ABFF;
     margin-right: 10px;
-    border-radius: 0 10px 10px 0;
 }
 
 .link {
-    color: white;
+    color: black;
     margin-top: 7px;
     font-size: 22px;
     text-decoration: none;
@@ -28,6 +26,7 @@
     color: black;
     margin-top: 7px;
     font-size: 22px;
+    font-weight: bold;
     text-decoration: none;
 }
 

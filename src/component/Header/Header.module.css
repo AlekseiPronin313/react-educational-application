@@ -3,6 +3,7 @@
     grid-area: header;
     background-color: #00BFFF;
     margin: 0 0 5px;
+    border-radius: 0 0 7px 7px;
 }
 
 .img {

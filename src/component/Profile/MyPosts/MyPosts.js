@@ -2,24 +2,29 @@ import React from "react";
 import Style from './MyPosts.module.css'
 import Post from "./Posts/Post";
 
-const postsData = [
-    {id: 1, message: 'hi', likesCount: 12},
-    {id: 2, message: 'hey', likesCount: 2},
-    {id: 3, message: 'da', likesCount: 7},
-    {id: 4, message: 'yes', likesCount: 33},
-]
+const MyPosts = (props) => {
+    const newPostRef = React.createRef();
 
-const MyPosts = () => {
+    const addPost = () => {
+        props.dispatch({type: 'ADD-POST'})
+    }
+
+    const postChange = () => {
+        let text = newPostRef.current.value
+        let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text}
+        props.dispatch(action)
+    }
+
 return (
     <div>
         my post
-        <div>
-            <div>
-                <textarea></textarea>
+        <div className={Style.box}>
+            <div className={Style.box_input}>
+                <input className={Style.input} onChange={postChange} ref={newPostRef} value={props.newPostText} placeholder="What's new?"></input>
             </div>
-            <button className={Style.button}>Add Post</button>
+            <button className={Style.button} onClick={addPost}>Add Post</button>
         </div>
-        <Post posts={postsData}/>
+        <Post props={props.props}/>
     </div>
 )
 }
