@@ -1,0 +1,19 @@
+.dialog {
+    color: black;
+    text-decoration: none;
+    margin-bottom: 7px;
+    font-size: 18px;
+}
+
+.dialog:hover {
+    opacity: 0.6;
+}
+
+.dialog:last-of-type {
+    margin: 0;
+}
+
+.active {
+    color: green;
+    text-decoration: none;
+}
