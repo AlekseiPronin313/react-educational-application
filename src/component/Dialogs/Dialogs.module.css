@@ -1,6 +1,6 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 10fr 3fr;
 }
 
 .dialogs_items {
@@ -10,14 +10,20 @@
 }
 
 .messages {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 10px;
 }
 
-.message {
-
+.box_message {
+    text-align: center;
 }
 
 .input {
+    height: 20px;
+    width: 50%;
     outline: none;
     padding-left: 7px;
 }
@@ -28,5 +34,8 @@
 }
 
 .box {
+    display: flex;
+    justify-content: center;
+    width: 100%;
     margin-top: 10px;
 }

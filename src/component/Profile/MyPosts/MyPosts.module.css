@@ -18,6 +18,8 @@
     min-height: 24px;
     padding: 2px 0 2px 7px;
     outline: none;
+    border: 1px solid #6699CC;
+    border-radius: 5px;
 }
 
 .box {
