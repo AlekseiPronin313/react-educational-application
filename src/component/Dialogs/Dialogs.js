@@ -2,9 +2,20 @@ import React from "react";
 import Style from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/state";
 
 const Dialogs = (props) => {
-    const [isText, setText] = React.useState('')
+    const newMessageRef = React.createRef()
+
+    const addMessage = () => {
+        props.dispatch(addMessageActionCreator())
+    }
+
+    const messageChange = () => {
+        const text =newMessageRef.current.value
+        props.dispatch(updateNewMessageTextActionCreator(text))
+    }
+
     return (
         <div className={Style.dialogs}>
             <div className={Style.dialogs_items}>
@@ -15,8 +26,13 @@ const Dialogs = (props) => {
                     <Message props={props.props}/>
                 </div>
                 <div className={Style.box}>
-                    <input className={Style.input} placeholder="Enter your message" onChange={(event) => setText(event.target.value)}/>
-                    <button className={Style.button} onClick={() => alert(isText)}>Submit</button>
+                    <input className={Style.input}
+                           placeholder="Enter your message"
+                           onChange={messageChange}
+                           ref={newMessageRef}
+                           value={props.newMessageText}
+                    />
+                    <button className={Style.button} onClick={addMessage}>Submit</button>
                 </div>
             </div>
         </div>

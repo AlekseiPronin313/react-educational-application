@@ -16,9 +16,15 @@ function App(props) {
               <Navbar props={props.state.friendsPage}/>
               <div className={Style.main}>
                   <Routes>
-                      <Route index path='/profile' element={<Profile profilePage={props.state.profilePage} dispatch={props.dispatch}
+                      <Route index path='/profile' element={<Profile
+                          profilePage={props.state.profilePage}
+                          dispatch={props.dispatch}
                       />}/>
-                      <Route path='/dialogs' element={<Dialogs props={props.state.dialogsPage}/>}/>
+                      <Route path='/dialogs' element={<Dialogs
+                          props={props.state.dialogsPage}
+                          dispatch={props.dispatch}
+                          newMessageText={props.state.dialogsPage.newMessageText}
+                      />}/>
                       <Route path='/news' element={<News/>}/>
                       <Route path='/music' element={<Music/>}/>
                       <Route path='/settings' element={<Settings/>}/>
