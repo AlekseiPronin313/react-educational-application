@@ -11,7 +11,7 @@ const store = {
                 {id: 3, message: 'da', likesCount: 7},
                 {id: 4, message: 'yes', likesCount: 33},
             ],
-            newPostText: ''
+            newPostText: ' '
         },
         dialogsPage: {
             dialogs: [
@@ -26,7 +26,7 @@ const store = {
                 {id: 3, message: 'da'},
                 {id: 4, message: 'yes'},
             ],
-            newMessageText: ''
+            newMessageText: ' '
         },
         friendsPage: {
             friends: [
