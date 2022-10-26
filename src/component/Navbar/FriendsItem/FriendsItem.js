@@ -7,7 +7,7 @@ const  FriendsItem = (props) => {
         <div className={Style.friends}>
             <h3 className={Style.text}>Frends</h3>
             <div className={Style.box}>
-                <Frends props={props.props}/>.
+                <Frends props={props.friendsPage}/>.
             </div>
         </div>
     )

@@ -3,6 +3,7 @@ import Style from './MyPosts.module.css'
 import Post from "./Posts/Post";
 
 const MyPosts = (props) => {
+    console.log(props)
     const newPostRef = React.createRef();
 
     const onAddPost = () => {
@@ -28,7 +29,7 @@ return (
             </div>
             <button className={Style.button} onClick={onAddPost}>Add Post</button>
         </div>
-        <Post props={props.posts}/>
+        <Post props={props.profilePage}/>
     </div>
 )}
 
