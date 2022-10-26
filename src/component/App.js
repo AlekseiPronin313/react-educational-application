@@ -4,10 +4,10 @@ import Style from './App.module.css'
 import Header from "./Header/Header";
 import Navbar from "./Navbar/Navbar";
 import Profile from "./Profile/Profile";
-import Dialogs from "./Dialogs/Dialogs";
 import News from "./News/News";
 import Music from "./Music/Music";
 import Settings from "./Settings/Settings";
+import DialogsContainer from "./Dialogs/DialogsContainer";
 
 function App(props) {
   return (
@@ -17,13 +17,10 @@ function App(props) {
               <div className={Style.main}>
                   <Routes>
                       <Route index path='/profile' element={<Profile
-                          profilePage={props.state.profilePage}
-                          dispatch={props.dispatch}
+                          store={props.store}
                       />}/>
-                      <Route path='/dialogs' element={<Dialogs
-                          props={props.state.dialogsPage}
-                          dispatch={props.dispatch}
-                          newMessageText={props.state.dialogsPage.newMessageText}
+                      <Route path='/dialogs' element={<DialogsContainer
+                          store={props.store}
                       />}/>
                       <Route path='/news' element={<News/>}/>
                       <Route path='/music' element={<Music/>}/>

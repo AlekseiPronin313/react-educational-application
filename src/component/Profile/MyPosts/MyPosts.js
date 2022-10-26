@@ -1,19 +1,17 @@
 import React from "react";
 import Style from './MyPosts.module.css'
 import Post from "./Posts/Post";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
-
 
 const MyPosts = (props) => {
     const newPostRef = React.createRef();
 
-    const addPost = () => {
-        props.dispatch(addPostActionCreator())
+    const onAddPost = () => {
+        props.addPost()
     }
 
-    const postChange = () => {
+    const onPostChange = () => {
         let text = newPostRef.current.value
-        props.dispatch(updateNewPostTextActionCreator(text))
+        props.updateNewPostText(text)
     }
 
 return (
@@ -22,18 +20,16 @@ return (
         <div className={Style.box}>
             <div className={Style.box_input}>
                 <input className={Style.input}
-                       onChange={postChange}
+                       onChange={onPostChange}
                        ref={newPostRef}
                        value={props.newPostText}
                        placeholder="What's new?">
-
                 </input>
             </div>
-            <button className={Style.button} onClick={addPost}>Add Post</button>
+            <button className={Style.button} onClick={onAddPost}>Add Post</button>
         </div>
-        <Post props={props.props}/>
+        <Post props={props.posts}/>
     </div>
-)
-}
+)}
 
 export default MyPosts

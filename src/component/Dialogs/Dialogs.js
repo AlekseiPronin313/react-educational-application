@@ -2,25 +2,24 @@ import React from "react";
 import Style from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/dialogs-reducer";
 
 const Dialogs = (props) => {
     const newMessageRef = React.createRef()
 
     const addMessage = () => {
-        props.dispatch(addMessageActionCreator())
+        props.sendMessage()
     }
 
     const messageChange = () => {
         const text =newMessageRef.current.value
-        props.dispatch(updateNewMessageTextActionCreator(text))
+        props.updateNewMessageBody(text)
     }
 
     return (
         <div className={Style.dialogs}>
             <div className={Style.messages}>
                 <div className={Style.box_message}>
-                    <Message props={props.props}/>
+                    <Message props={props.dialogsPage.messages}/>
                 </div>
                 <div className={Style.box}>
                     <input className={Style.input}
@@ -33,7 +32,7 @@ const Dialogs = (props) => {
                 </div>
             </div>
             <div className={Style.dialogs_items}>
-                <DialogItem props={props.props}/>
+                <DialogItem props={props.dialogsPage.dialogs}/>
             </div>
         </div>
     )
