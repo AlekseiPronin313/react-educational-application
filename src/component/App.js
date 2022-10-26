@@ -9,14 +9,14 @@ import Music from "./Music/Music";
 import Settings from "./Settings/Settings";
 import DialogsContainer from "./Dialogs/DialogsContainer";
 
-function App(props) {
+function App() {
   return (
           <div className={Style.page}>
               <Header/>
               <Navbar/>
               <div className={Style.main}>
                   <Routes>
-                      <Route index path='/profile' element={<Profile/>}/>
+                      <Route path='/profile' element={<Profile/>}/>
                       <Route path='/dialogs' element={<DialogsContainer/>}/>
                       <Route path='/news' element={<News/>}/>
                       <Route path='/music' element={<Music/>}/>

@@ -3,7 +3,6 @@ import Style from './MyPosts.module.css'
 import Post from "./Posts/Post";
 
 const MyPosts = (props) => {
-    console.log(props)
     const newPostRef = React.createRef();
 
     const onAddPost = () => {
