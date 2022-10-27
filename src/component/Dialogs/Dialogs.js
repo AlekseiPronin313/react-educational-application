@@ -26,7 +26,7 @@ const Dialogs = (props) => {
                            placeholder="Enter your message"
                            onChange={messageChange}
                            ref={newMessageRef}
-                           value={props.newMessageText}
+                           value={props.dialogsPage.newMessageText}
                     />
                     <button className={Style.button} onClick={addMessage}>Submit</button>
                 </div>

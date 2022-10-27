@@ -22,7 +22,7 @@ return (
                 <input className={Style.input}
                        onChange={onPostChange}
                        ref={newPostRef}
-                       value={props.newPostText}
+                       value={props.profilePage.newPostText}
                        placeholder="What's new?">
                 </input>
             </div>
