@@ -17,6 +17,9 @@ const Dialogs = (props) => {
 
     return (
         <div className={Style.dialogs}>
+            <div className={Style.dialogs_items}>
+                <DialogItem props={props.dialogsPage.dialogs}/>
+            </div>
             <div className={Style.messages}>
                 <div className={Style.box_message}>
                     <Message props={props.dialogsPage.messages}/>
@@ -30,9 +33,6 @@ const Dialogs = (props) => {
                     />
                     <button className={Style.button} onClick={addMessage}>Submit</button>
                 </div>
-            </div>
-            <div className={Style.dialogs_items}>
-                <DialogItem props={props.dialogsPage.dialogs}/>
             </div>
         </div>
     )

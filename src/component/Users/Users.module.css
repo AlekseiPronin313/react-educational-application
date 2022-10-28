@@ -1,0 +1,66 @@
+.users {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    object-fit: cover;
+}
+
+.users_box {
+    width: 90%;
+    display: flex;
+    border-bottom: 1px solid rgba(102, 153, 204, 0.3);
+    padding: 8px 0;
+}
+
+.box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between
+}
+
+.location_box {
+    display: flex;
+}
+
+.button_box {
+    display: flex;
+    align-items: center;
+}
+
+.button {
+    height: 30px;
+    color: white;
+    background-color: #0077ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0 8px;
+    text-align: center;
+}
+
+.box_info {
+    margin: 10px 0 0 24px;
+}
+
+.name {
+    margin: 0 0 8px;
+}
+
+.status {
+    margin: 16px 0 0;
+}
+
+.city {
+    margin: 0;
+}
+
+.country {
+    margin: 0 5px 0 0;
+}
