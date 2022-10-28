@@ -1,61 +1,51 @@
 import React from "react";
 import Style from './Users.module.css'
+import axios from "axios";
+import img_avatar from './../../assets/image/img_avatar.png'
 
-function Users(props) {
-    if (props.users.length === 0) {
-        props.setUsers([
-            {
-                id: 1, imgUrl: 'https://img.amur.pro/blog/2022/07/465/bddf5fa2f38db7a4e9fe93f7728d52f9.jpg',
-                followed: false, fullName: 'Dima',
-                status: 'good', location: {city: 'Minsk', country: 'Belarus'}
-            },
-            {
-                id: 2, imgUrl: 'https://img.amur.pro/blog/2022/07/465/bddf5fa2f38db7a4e9fe93f7728d52f9.jpg',
-                followed: true, fullName: 'Alexei',
-                status: 'predately', location: {city: 'Ryan', country: 'Rossi'}
-            },
-            {
-                id: 3, imgUrl: 'https://img.amur.pro/blog/2022/07/465/bddf5fa2f38db7a4e9fe93f7728d52f9.jpg',
-                followed: false, fullName: 'Nikita',
-                status: 'frendli', location: {city: 'Berlin', country: 'German'}
-            }
-        ])
+class Users extends React.Component {
+    componentDidMount() {
+        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+            .then(response => this.props.setUsers(response.data.items))
     }
 
-    return (
-        <div className={Style.users}>
-            {
-                props.users.map((user, id) => {
-                    return (
-                        <div className={Style.users_box} key={id}>
-                                <img className={Style.img} src={user.imgUrl}/>
-                            <div className={Style.box}>
-                                <div className={Style.box_info}>
-                                    <p className={Style.name}>{user.fullName}</p>
-                                    <div className={Style.location_box}>
-                                        <p className={Style.country}>{user.location.country}</p>
-                                        <p className={Style.city}>{user.location.city}</p>
+    render() {
+        return (
+            <div className={Style.users}>
+                {
+                    this.props.users.map((user, id) => {
+                        return (
+                            <div className={Style.users_box} key={id}>
+                                <img className={Style.img}
+                                     src={user.photos.small != null ? user.photos.small : img_avatar}/>
+                                <div className={Style.box}>
+                                    <div className={Style.box_info}>
+                                        <p className={Style.name}>{user.name}</p>
+                                        <div className={Style.location_box}>
+                                            {/*<p className={Style.country}>{user.location.country}</p>*/}
+                                            {/*<p className={Style.city}>{user.location.city}</p>*/}
+                                        </div>
+                                        <p className={Style.status}>{user.status}</p>
                                     </div>
-                                    <p className={Style.status}>{user.status}</p>
-                                </div>
-                                <div className={Style.button_box}>
-                                    {
-                                        user.followed
-                                            ? <button className={Style.button} onClick={() => {
-                                                props.unfollow(user.id)
-                                            }}>Unfollow</button>
-                                            : <button className={Style.button} onClick={() => {
-                                                props.follow(user.id)
-                                            }}>Follow</button>
-                                    }
+                                    <div className={Style.button_box}>
+                                        {
+                                            user.followed
+                                                ? <button className={Style.button} onClick={() => {
+                                                    this.props.unfollow(user.id)
+                                                }}>Unfollow</button>
+                                                : <button className={Style.button} onClick={() => {
+                                                    this.props.follow(user.id)
+                                                }}>Follow</button>
+                                        }
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    )
-                })
-            }
-        </div>
-    )
+                        )
+                    })
+                }
+            </div>
+        )
+    }
 }
 
 export default Users
