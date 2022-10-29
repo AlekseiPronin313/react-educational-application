@@ -64,3 +64,20 @@
 .country {
     margin: 0 5px 0 0;
 }
+
+.selectedPage {
+    cursor: pointer;
+    margin-right: 4px;
+}
+
+.active_selectedPage {
+    cursor: pointer;
+    margin-right: 4px;
+    font-weight: bold;
+}
+
+.amount {
+    overflow: hidden;
+    max-width: 300px;
+    max-height: 20px;
+}
