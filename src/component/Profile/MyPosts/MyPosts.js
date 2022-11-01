@@ -15,7 +15,7 @@ const MyPosts = (props) => {
     }
 
 return (
-    <div>
+    <div className={Style.myPosts}>
         my post
         <div className={Style.box}>
             <div className={Style.box_input}>

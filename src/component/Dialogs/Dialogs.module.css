@@ -1,6 +1,8 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
+    background: white;
+    border-radius: 16px;
 }
 
 .dialogs_items {

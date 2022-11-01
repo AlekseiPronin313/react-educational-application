@@ -4,7 +4,7 @@ import Style from './Preloader.module.css'
 
 const Preloader = () => {
     return <div className={Style.box}>
-        <img src={preloader}/>
+        <img className={Style.preloader} src={preloader}/>
     </div>
 }
 

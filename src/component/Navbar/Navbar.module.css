@@ -2,6 +2,8 @@
     height: 500px ;
     grid-area: nav;
     margin-right: 10px;
+    background: white;
+    border-radius: 16px;
 }
 
 .link {

@@ -3,12 +3,12 @@ import {Route, Routes} from "react-router-dom";
 import Style from './App.module.css'
 import Header from "./Header/Header";
 import Navbar from "./Navbar/Navbar";
-import Profile from "./Profile/Profile";
 import News from "./News/News";
 import Music from "./Music/Music";
 import Settings from "./Settings/Settings";
 import DialogsContainer from "./Dialogs/DialogsContainer";
 import UsersContainer from "./Users/UsersContainer";
+import ProfileContainer from "./Profile/ProfileContainer";
 
 function App() {
   return (
@@ -17,7 +17,10 @@ function App() {
               <Navbar/>
               <div className={Style.main}>
                   <Routes>
-                      <Route path='/profile' element={<Profile/>}/>
+                      <Route path='/profile' element={<ProfileContainer/>}>
+                          <Route path=':userId' element={<ProfileContainer/>}/>
+                      </Route>
+
                       <Route path='/dialogs' element={<DialogsContainer/>}/>
                       <Route path='/news' element={<News/>}/>
                       <Route path='/music' element={<Music/>}/>
