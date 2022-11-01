@@ -1,3 +1,5 @@
+* [Ссылка на проект GitHub](https://aleksey313.github.io/react-educational-application/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
