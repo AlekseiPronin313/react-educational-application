@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/Aleksey313/react-educational-application/static/css/main.740561d4.css",
+    "main.js": "/Aleksey313/react-educational-application/static/js/main.7ae1cf17.js",
+    "static/js/787.57b857a7.chunk.js": "/Aleksey313/react-educational-application/static/js/787.57b857a7.chunk.js",
+    "static/media/img_avatar.png": "/Aleksey313/react-educational-application/static/media/img_avatar.3acd15aaee852151cd2b.png",
+    "index.html": "/Aleksey313/react-educational-application/index.html",
+    "static/media/preloader.svg": "/Aleksey313/react-educational-application/static/media/preloader.7f4b2fb7cd2df81d8aa04a40d5a01261.svg",
+    "main.740561d4.css.map": "/Aleksey313/react-educational-application/static/css/main.740561d4.css.map",
+    "main.7ae1cf17.js.map": "/Aleksey313/react-educational-application/static/js/main.7ae1cf17.js.map",
+    "787.57b857a7.chunk.js.map": "/Aleksey313/react-educational-application/static/js/787.57b857a7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.740561d4.css",
+    "static/js/main.7ae1cf17.js"
+  ]
+}
