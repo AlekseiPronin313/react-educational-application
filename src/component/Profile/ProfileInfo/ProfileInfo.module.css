@@ -48,3 +48,30 @@
     flex-direction: column;
     margin-left: 24px;
 }
+
+.info {
+    background: white;
+    border-radius: 16px;
+    max-width: 100%;
+    margin: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0 20px 20px;
+}
+
+.contacts_box {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.contacts_box p {
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+.text {
+    font-size: 30px;
+    margin: 0 0 16px;
+}
