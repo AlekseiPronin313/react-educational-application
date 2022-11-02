@@ -12,4 +12,5 @@ const profile = {
 module.exports = function (app) {
     app.use("/api/1.0/users", createProxyMiddleware(users));
     app.use("/api/1.0/profile", createProxyMiddleware(profile));
+
 };

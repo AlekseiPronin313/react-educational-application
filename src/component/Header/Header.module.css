@@ -4,10 +4,32 @@
     background-color: #00BFFF;
     margin: 0 0 5px;
     border-radius: 0 0 7px 7px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
 }
 
 .img {
     max-width: 50px;
     max-height: 50px;
-    padding-left: 10px;
+}
+
+.loginBlock {
+    float: right;
+}
+
+.login {
+    margin: 0;
+    font-size: 20px;
+}
+
+.link {
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+}
+
+.link:hover {
+    opacity: 0.8;
 }
