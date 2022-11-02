@@ -1,4 +1,7 @@
-* [Ссылка на проект GitHub](https://aleksey313.github.io/react-educational-application/)
+# [Ссылка на проект GitHub](https://aleksey313.github.io/react-educational-application/)
+
+* Email: free@samuraijs.com
+* Password: free
 
 # Getting Started with Create React App
 
