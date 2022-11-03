@@ -12,6 +12,14 @@ export const userAPI = {
     getUsers(currentPage, pageSize) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`, {})
             .then(response => response.data)
+    },
+    postFollow(user){
+        return instance.post(`follow/${user}`, {})
+            .then(response => response.data)
+    },
+    deleteFollow(user){
+        return instance.delete(`follow/${user}`, {})
+            .then(response => response.data)
     }
 }
 
@@ -27,18 +35,6 @@ export const authAPI = {
         return instance.get(`auth/me`, {})
             .then(response => response.data)
     }
-}
-
-export const followAPI = {
-    postFollow(user){
-        return instance.post(`follow/${user.id}`, {})
-            .then(response => response.data)
-    },
-    deleteFollow(user){
-        return instance.delete(`follow/${user.id}`, {})
-            .then(response => response.data)
-    }
-
 }
 
 
