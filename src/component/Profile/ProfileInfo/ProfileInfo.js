@@ -2,6 +2,7 @@ import React from "react";
 import Style from './ProfileInfo.module.css'
 import Preloader from "../../common/Preloader/Preloader";
 import img_avatar from './../../../assets/image/img_avatar.png'
+import ProfileStatus from "./Status/ProfileStatus";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -19,7 +20,7 @@ const ProfileInfo = (props) => {
                     </div>
                     <div className={Style.box_info}>
                         <h2 className={Style.name}>{props.profile.fullName}</h2>
-                        <p className={Style.status}>{props.profile.aboutMe}</p>
+                        <ProfileStatus aboutMe={props.profile.aboutMe}/>
                     </div>
                 </div>
             </div>
