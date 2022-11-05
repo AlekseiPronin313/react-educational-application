@@ -2,6 +2,7 @@ import React from "react";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {sendMessage, updateNewMessageBody} from "../../redux/dialogs-reducer";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 let mapStateToProps = (state) => {
     return {
@@ -9,9 +10,11 @@ let mapStateToProps = (state) => {
     }
 }
 
+const AuthRedirectComponent = withAuthRedirect(Dialogs)
+
 const SuperDialogContainer = connect(mapStateToProps, {
     updateNewMessageBody,
     sendMessage
-}) (Dialogs)
+}) (AuthRedirectComponent)
 
 export default SuperDialogContainer
