@@ -20,7 +20,7 @@ const ProfileInfo = (props) => {
                     </div>
                     <div className={Style.box_info}>
                         <h2 className={Style.name}>{props.profile.fullName}</h2>
-                        <ProfileStatus aboutMe={props.profile.aboutMe}/>
+                        <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
                     </div>
                 </div>
             </div>
