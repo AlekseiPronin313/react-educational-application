@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/react-educational-application/static/css/main.f79a4002.css",
-    "main.js": "/react-educational-application/static/js/main.1d54a928.js",
+    "main.js": "/react-educational-application/static/js/main.a2a0c1f9.js",
     "static/js/787.57b857a7.chunk.js": "/react-educational-application/static/js/787.57b857a7.chunk.js",
     "static/media/img_avatar.png": "/react-educational-application/static/media/img_avatar.3acd15aaee852151cd2b.png",
     "index.html": "/react-educational-application/index.html",
     "static/media/preloader.svg": "/react-educational-application/static/media/preloader.7f4b2fb7cd2df81d8aa04a40d5a01261.svg",
     "main.f79a4002.css.map": "/react-educational-application/static/css/main.f79a4002.css.map",
-    "main.1d54a928.js.map": "/react-educational-application/static/js/main.1d54a928.js.map",
+    "main.a2a0c1f9.js.map": "/react-educational-application/static/js/main.a2a0c1f9.js.map",
     "787.57b857a7.chunk.js.map": "/react-educational-application/static/js/787.57b857a7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f79a4002.css",
-    "static/js/main.1d54a928.js"
+    "static/js/main.a2a0c1f9.js"
   ]
 }
