@@ -38,11 +38,6 @@
     font-size: 32px;
 }
 
-.status {
-    font-size: 18px;
-    margin: 0 0 10px;
-}
-
 .box_info {
     display: flex;
     flex-direction: column;
