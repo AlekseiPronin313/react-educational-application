@@ -24,13 +24,14 @@
 }
 
 .input {
-    height: 20px;
-    width: 50%;
+    box-sizing: border-box;
+    height: 26px;
     outline: none;
     padding-left: 7px;
 }
 
 .button {
+    height: 26px;
     cursor: pointer;
     margin-left: 7px;
 }

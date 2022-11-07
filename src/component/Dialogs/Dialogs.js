@@ -18,10 +18,8 @@ const Dialogs = (props) => {
                 <div className={Style.box_message}>
                     <Message props={props.dialogsPage.messages}/>
                 </div>
-                <div className={Style.box}>
                     <LoginReduxForm onSubmit={addNewMessage}
                     />
-                </div>
             </div>
         </div>
     )
