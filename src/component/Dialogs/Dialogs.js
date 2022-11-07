@@ -2,17 +2,11 @@ import React from "react";
 import Style from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import LoginReduxForm from "./DialogsForm";
 
 const Dialogs = (props) => {
-    const newMessageRef = React.createRef()
-
-    const addMessage = () => {
-        props.sendMessage()
-    }
-
-    const messageChange = () => {
-        const text =newMessageRef.current.value
-        props.updateNewMessageBody(text)
+    const addNewMessage = (values) => {
+        props.sendMessage(values.dialogs)
     }
 
     return (
@@ -25,13 +19,8 @@ const Dialogs = (props) => {
                     <Message props={props.dialogsPage.messages}/>
                 </div>
                 <div className={Style.box}>
-                    <input className={Style.input}
-                           placeholder="Enter your message"
-                           onChange={messageChange}
-                           ref={newMessageRef}
-                           value={props.dialogsPage.newMessageText}
+                    <LoginReduxForm onSubmit={addNewMessage}
                     />
-                    <button className={Style.button} onClick={addMessage}>Submit</button>
                 </div>
             </div>
         </div>

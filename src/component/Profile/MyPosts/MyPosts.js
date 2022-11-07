@@ -1,33 +1,17 @@
 import React from "react";
 import Style from './MyPosts.module.css'
 import Post from "./Posts/Post";
+import MyPostsReduxForm from "./MyPostsForm";
 
 const MyPosts = (props) => {
-    const newPostRef = React.createRef();
-
-    const onAddPost = () => {
-        props.addPostActionCreator()
-    }
-
-    const onPostChange = () => {
-        let text = newPostRef.current.value
-        props.updateNewPostTextActionCreator(text)
+    const addNewPosts = (values) => {
+        props.addPost(values.posts)
     }
 
 return (
     <div className={Style.myPosts}>
         my post
-        <div className={Style.box}>
-            <div className={Style.box_input}>
-                <input className={Style.input}
-                       onChange={onPostChange}
-                       ref={newPostRef}
-                       value={props.profilePage.newPostText}
-                       placeholder="What's new?">
-                </input>
-            </div>
-            <button className={Style.button} onClick={onAddPost}>Add Post</button>
-        </div>
+           <MyPostsReduxForm onSubmit={addNewPosts}/>
         <Post props={props.profilePage}/>
     </div>
 )}
