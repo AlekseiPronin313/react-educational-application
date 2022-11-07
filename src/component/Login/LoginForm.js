@@ -7,12 +7,12 @@ import {Input} from "../common/FormsControls/FormsControls";
 const LoginForm = (props) => {
     return (
         <form className={Style.form} onSubmit={props.handleSubmit}>
-            <Field placeholder={'Login'} name={'login'} component={Input} validate={[required]}/>
-            <Field placeholder={'Password'} name={'password'} component={Input} validate={[required]}/>
+            <Field className={Style.input} placeholder={'Email'} name={'email'} component={Input} validate={[required]}/>
+            <Field className={Style.input} placeholder={'Password'} name={'password'} type={'password'} component={Input} validate={[required]}/>
             <div>
                 <Field component={'input'} name={'rememberMe'} type={'checkbox'}/> Remember me
             </div>
-            <button>Login</button>
+            <button className={Style.button}>Login</button>
         </form>
     )
 }
