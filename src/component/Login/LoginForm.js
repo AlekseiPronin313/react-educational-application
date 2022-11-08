@@ -8,7 +8,11 @@ const LoginForm = (props) => {
     return (
         <form className={Style.form} onSubmit={props.handleSubmit}>
             <Field className={Style.input} placeholder={'Email'} name={'email'} component={Input} validate={[required]}/>
-            <Field className={Style.input} placeholder={'Password'} name={'password'} type={'password'} component={Input} validate={[required]}/>
+            <Field className={Style.input} placeholder={'Password'}
+                   name={'password'} type={'password'}
+                   component={Input} validate={[required]}/>
+            {props.error && <div className={Style.formSummaryError}>{props.error}</div>
+            }
             <div>
                 <Field component={'input'} name={'rememberMe'} type={'checkbox'}/> Remember me
             </div>
