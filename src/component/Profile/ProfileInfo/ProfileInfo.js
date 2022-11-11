@@ -4,8 +4,8 @@ import Preloader from "../../common/Preloader/Preloader";
 import img_avatar from './../../../assets/image/img_avatar.png'
 import ProfileStatus from "./Status/ProfileStatus";
 
-const ProfileInfo = (props) => {
-    if (!props.profile) {
+const ProfileInfo = ({profile, status, updateStatus}) => {
+    if (!profile) {
         return <Preloader/>
     }
 
@@ -15,12 +15,12 @@ const ProfileInfo = (props) => {
                 <div className={Style.profile_box}>
                     <div className={Style.box_img}>
                         <img className={Style.img}
-                             src={props.profile.photos.large != null ? props.profile.photos.large : img_avatar}
+                             src={profile.photos.large != null ? profile.photos.large : img_avatar}
                              alt={'avatar'}/>
                     </div>
                     <div className={Style.box_info}>
-                        <h2 className={Style.name}>{props.profile.fullName}</h2>
-                        <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                        <h2 className={Style.name}>{profile.fullName}</h2>
+                        <ProfileStatus status={status} updateStatus={updateStatus}/>
                     </div>
                 </div>
             </div>
@@ -28,29 +28,28 @@ const ProfileInfo = (props) => {
                 <h2 className={Style.text}>Contact Information</h2>
                 <div className={Style.contacts_box}>
                     {
-                        props.profile.contacts.github != null ? <p>GitHub: {props.profile.contacts.github}</p> : ''
+                        profile.contacts.github != null ? <p>GitHub: {profile.contacts.github}</p> : ''
                     }
                     {
-                        props.profile.contacts.fcebook != null ? <p>Facebook: {props.profile.contacts.fcebook}</p> : ''
+                        profile.contacts.fcebook != null ? <p>Facebook: {profile.contacts.fcebook}</p> : ''
                     }
                     {
-                        props.profile.contacts.instagram != null ?
-                            <p>Instagram: {props.profile.contacts.instagram}</p> : ''
+                        profile.contacts.instagram != null ? <p>Instagram: {profile.contacts.instagram}</p> : ''
                     }
                     {
-                        props.profile.contacts.twitter != null ? <p>MainLink: {props.profile.contacts.twitter}</p> : ''
+                       profile.contacts.twitter != null ? <p>MainLink: {profile.contacts.twitter}</p> : ''
                     }
                     {
-                        props.profile.contacts.mainLink != null ? <p>Twitter: {props.profile.contacts.mainLink}</p> : ''
+                       profile.contacts.mainLink != null ? <p>Twitter: {profile.contacts.mainLink}</p> : ''
                     }
                     {
-                        props.profile.contacts.vk != null ? <p>ВКонтакте: {props.profile.contacts.vk}</p> : ''
+                        profile.contacts.vk != null ? <p>ВКонтакте: {profile.contacts.vk}</p> : ''
                     }
                     {
-                        props.profile.contacts.website != null ? <p>Website: {props.profile.contacts.website}</p> : ''
+                        profile.contacts.website != null ? <p>Website: {profile.contacts.website}</p> : ''
                     }
                     {
-                        props.profile.contacts.youtube != null ? <p>YouTube: {props.profile.contacts.youtube}</p> : ''
+                        profile.contacts.youtube != null ? <p>YouTube: {profile.contacts.youtube}</p> : ''
                     }
                 </div>
             </div>

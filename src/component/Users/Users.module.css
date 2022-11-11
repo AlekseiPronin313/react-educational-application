@@ -26,10 +26,6 @@
     justify-content: space-between
 }
 
-.location_box {
-    display: flex;
-}
-
 .button_box {
     display: flex;
     align-items: center;
@@ -57,31 +53,6 @@
 
 .status {
     margin: 16px 0 0;
-}
-
-.city {
-    margin: 0;
-}
-
-.country {
-    margin: 0 5px 0 0;
-}
-
-.selectedPage {
-    cursor: pointer;
-    margin-right: 4px;
-}
-
-.active_selectedPage {
-    cursor: pointer;
-    margin-right: 4px;
-    font-weight: bold;
-}
-
-.amount {
-    overflow: hidden;
-    max-width: 300px;
-    max-height: 20px;
 }
 
 .link {

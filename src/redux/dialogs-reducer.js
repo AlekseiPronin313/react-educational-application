@@ -1,6 +1,6 @@
-const ADD_MESSAGE = 'ADD-MESSAGE';
+const ADD_MESSAGE = 'dialogs/ADD-MESSAGE';
 
-let initialState = {
+const initialState = {
         dialogs: [
             {id: 1, name: 'Alex'},
             {id: 2, name: 'Dima'},

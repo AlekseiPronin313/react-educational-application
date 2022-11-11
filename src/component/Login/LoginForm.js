@@ -4,14 +4,14 @@ import {Field, reduxForm} from "redux-form";
 import {required} from "../../utils/validators";
 import {Input} from "../common/FormsControls/FormsControls";
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit, error, }) => {
     return (
-        <form className={Style.form} onSubmit={props.handleSubmit}>
+        <form className={Style.form} onSubmit={handleSubmit}>
             <Field className={Style.input} placeholder={'Email'} name={'email'} component={Input} validate={[required]}/>
             <Field className={Style.input} placeholder={'Password'}
                    name={'password'} type={'password'}
                    component={Input} validate={[required]}/>
-            {props.error && <div className={Style.formSummaryError}>{props.error}</div>
+            {error && <div className={Style.formSummaryError}>{error}</div>
             }
             <div>
                 <Field component={'input'} name={'rememberMe'} type={'checkbox'}/> Remember me

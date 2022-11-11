@@ -1,9 +1,10 @@
 import {profileAPI} from "../api/api";
 
-const ADD_POST = 'ADD-POST';
-const SET_USER_PROFILE = 'SET_USER_PROFILE';
-const SET_STATUS = 'SET_STATUS';
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
+const ADD_POST = 'profile/ADD-POST';
+const SET_USER_PROFILE = 'profile/SET_USER_PROFILE';
+const SET_STATUS = 'profile/SET_STATUS';
+const DELETE_POST = 'profile/DELETE_POST';
+const TOGGLE_IS_FETCHING = 'profile/TOGGLE_IS_FETCHING'
 
 let initialState = {
         posts: [
@@ -45,6 +46,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: action.isFetching
             }
+        case DELETE_POST:
+            return {
+                ...state,
+                posts: state.posts.filter(post => post.id !== action.postId)
+            }
         default:
             return state
     }
@@ -53,27 +59,24 @@ const profileReducer = (state = initialState, action) => {
 export const addPostActionCreator = (newPostText) => ({type: ADD_POST, newPostText})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setStatus = (status) => ({type: SET_STATUS, status})
+export const deletePost = (postId) => ({type: DELETE_POST, postId})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching })
 
-export const getUserProfile = (userId) => (dispatch) => {
+export const getUserProfile = (userId) => async (dispatch) => {
     dispatch(toggleIsFetching(true))
-    profileAPI.getProfile(userId).then(data => {
+    const data = await profileAPI.getProfile(userId)
         dispatch(toggleIsFetching(false))
         dispatch(setUserProfile(data))
-    })
 }
-export const getStatus = (userId) => (dispatch) => {
-    profileAPI.getStatus(userId).then(data => {
+export const getStatus = (userId) => async (dispatch) => {
+    const data = await profileAPI.getStatus(userId)
         dispatch(setStatus(data.data))
-    })
 }
-export const updateStatus = (status) => (dispatch) => {
-    profileAPI.updateStatus(status)
-        .then(data => {
+export const updateStatus = (status) => async (dispatch) => {
+    const data = await profileAPI.updateStatus(status)
             if (data.resultCode === 0) {
                 dispatch(setStatus(status))
             }
-    })
 }
 
 export default profileReducer
