@@ -39,6 +39,7 @@
 }
 
 .box_info {
+    width: 80%;
     display: flex;
     flex-direction: column;
     margin-left: 24px;

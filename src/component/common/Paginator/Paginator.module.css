@@ -1,16 +1,37 @@
+.amount {
+    margin-top: 7px;
+    display: flex;
+    align-items: center;
+    height: 30px;
+}
+
 .selectedPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
-    margin-right: 4px;
 }
 
 .active_selectedPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
-    margin-right: 4px;
     font-weight: bold;
+    border: 1px solid black;
+    border-radius: 50%;
 }
 
-.amount {
-    overflow: hidden;
-    max-width: 300px;
-    max-height: 20px;
+.button {
+    margin: 7px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: rgba(153, 147, 147, 0.4);
 }

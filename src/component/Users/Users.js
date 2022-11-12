@@ -3,12 +3,12 @@ import Style from './Users.module.css'
 import Paginator from "../common/Paginator/Paginator";
 import User from "./User";
 
-const Users = ({currentPage, onPageChanged, totalUsersCount, pageSize, users, ...props}) => {
+const Users = ({currentPage, onPageChanged, totalItemsCount, pageSize, users, ...props}) => {
     return (
         <div className={Style.users}>
             <Paginator currentPage={currentPage}
                        onPageChanged={onPageChanged}
-                       totalUsersCount={totalUsersCount}
+                       totalItemsCount={totalItemsCount}
                        pageSize={pageSize}
             />
             {
