@@ -1,12 +1,11 @@
 import React from "react";
 import Style from './ProfileInfo.module.css'
-import Preloader from "../../common/Preloader/Preloader";
 import img_avatar from './../../../assets/image/img_avatar.png'
 import ProfileStatus from "./Status/ProfileStatus";
 
 const ProfileInfo = ({profile, status, updateStatus}) => {
     if (!profile) {
-        return <Preloader/>
+        return true
     }
 
     return (
