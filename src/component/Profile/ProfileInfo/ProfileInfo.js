@@ -3,9 +3,14 @@ import Style from './ProfileInfo.module.css'
 import img_avatar from './../../../assets/image/img_avatar.png'
 import ProfileStatus from "./Status/ProfileStatus";
 
-const ProfileInfo = ({profile, status, updateStatus}) => {
+const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
     if (!profile) {
         return true
+    }
+    const onMainPhotoSelected = (e) => {
+        if (e.target.files.length) {
+            savePhoto(e.target.files[0])
+        }
     }
 
     return (
@@ -14,8 +19,14 @@ const ProfileInfo = ({profile, status, updateStatus}) => {
                 <div className={Style.profile_box}>
                     <div className={Style.box_img}>
                         <img className={Style.img}
-                             src={profile.photos.large != null ? profile.photos.large : img_avatar}
+                             src={profile.photos.large || img_avatar}
                              alt={'avatar'}/>
+                        {isOwner && <div className={Style.button_box}>
+                            <label className={Style.label} htmlFor='file'>Загрузка новой фотографии</label>
+                            <input name="file" id='file' multiple className={Style.img_button} type={'file'}
+                                   onChange={onMainPhotoSelected}/>
+                        </div>
+                            }
                     </div>
                     <div className={Style.box_info}>
                         <h2 className={Style.name}>{profile.fullName}</h2>

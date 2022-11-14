@@ -31,6 +31,39 @@
     height: 95%;
     border-radius: 50%;
     object-fit: cover;
+    position: relative;
+}
+
+.button_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: absolute;
+    transition: all 0.5s ease;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    width: 95%;
+    height: 95%;
+    border-radius: 50%;
+    opacity: 0;
+    cursor: pointer;
+    color: white;
+    text-align: center;
+}
+
+.label:hover {
+    background-color: rgba(0, 0, 0, .4);
+    opacity: 1;
+}
+
+.img_button {
+    display: none;
 }
 
 .name {
