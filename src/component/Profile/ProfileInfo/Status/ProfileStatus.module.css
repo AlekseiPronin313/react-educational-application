@@ -8,8 +8,13 @@
     font-size: 16px;
 }
 
-.text {
+.status_text {
     width: 300px;
     font-size: 20px;
     cursor: pointer;
+}
+
+.status {
+    width: 300px;
+    font-size: 20px;
 }

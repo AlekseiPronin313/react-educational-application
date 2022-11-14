@@ -2,10 +2,11 @@ import React from "react";
 import Style from './ProfileInfo.module.css'
 import img_avatar from './../../../assets/image/img_avatar.png'
 import ProfileStatus from "./Status/ProfileStatus";
+import Paginator from "../../common/Paginator/Paginator";
 
 const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
     if (!profile) {
-        return true
+        return <Paginator/>
     }
     const onMainPhotoSelected = (e) => {
         if (e.target.files.length) {
@@ -30,7 +31,7 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
                     </div>
                     <div className={Style.box_info}>
                         <h2 className={Style.name}>{profile.fullName}</h2>
-                        <ProfileStatus status={status} updateStatus={updateStatus}/>
+                        <ProfileStatus isOwner={isOwner} status={status} updateStatus={updateStatus}/>
                     </div>
                 </div>
             </div>
