@@ -1,13 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
 import Style from './ProfileInfo.module.css'
 import img_avatar from './../../../assets/image/img_avatar.png'
 import ProfileStatus from "./Status/ProfileStatus";
 import Paginator from "../../common/Paginator/Paginator";
+import Contacts from "./Contacts/Contacts";
+import ProfileReduxForm from "./ProfileDataForm/ProfileDataForm";
 
-const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
+const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile}) => {
+    const [editMode, setEditMode] = useState(false)
+
+    const goToEditMode = () => {setEditMode(true)}
+
+    const onSubmit = (formData) => {
+        saveProfile(formData)
+            .then(() => {
+                setEditMode(false)
+            })
+    }
+
     if (!profile) {
         return <Paginator/>
     }
+
     const onMainPhotoSelected = (e) => {
         if (e.target.files.length) {
             savePhoto(e.target.files[0])
@@ -35,35 +49,9 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
                     </div>
                 </div>
             </div>
-            <div className={Style.info}>
-                <h2 className={Style.text}>Contact Information</h2>
-                <div className={Style.contacts_box}>
-                    {
-                        profile.contacts.github != null ? <p>GitHub: {profile.contacts.github}</p> : ''
-                    }
-                    {
-                        profile.contacts.fcebook != null ? <p>Facebook: {profile.contacts.fcebook}</p> : ''
-                    }
-                    {
-                        profile.contacts.instagram != null ? <p>Instagram: {profile.contacts.instagram}</p> : ''
-                    }
-                    {
-                       profile.contacts.twitter != null ? <p>MainLink: {profile.contacts.twitter}</p> : ''
-                    }
-                    {
-                       profile.contacts.mainLink != null ? <p>Twitter: {profile.contacts.mainLink}</p> : ''
-                    }
-                    {
-                        profile.contacts.vk != null ? <p>ВКонтакте: {profile.contacts.vk}</p> : ''
-                    }
-                    {
-                        profile.contacts.website != null ? <p>Website: {profile.contacts.website}</p> : ''
-                    }
-                    {
-                        profile.contacts.youtube != null ? <p>YouTube: {profile.contacts.youtube}</p> : ''
-                    }
-                </div>
-            </div>
+            {editMode ? <ProfileReduxForm initialValues={profile} onSubmit={onSubmit} profile={profile}/>
+                : <Contacts profile={profile} isOwner={isOwner} goToEditMode={goToEditMode}/>}
+
         </div>
     )
 }
