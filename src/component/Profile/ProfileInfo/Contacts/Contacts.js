@@ -1,24 +1,27 @@
 import React from "react";
 import Style from "../ProfileInfo.module.css";
+import button_editor from '../../../../assets/image/button-editor.svg'
 
 export const ContactsData = ({contactTitle, contactValue}) => {
     return (
-        <p >{contactTitle} : {contactValue}</p>
+        <h3 className={Style.text}>{contactTitle} : <span className={Style.text_contents}>{contactValue}</span></h3>
     )
 }
 
 const Contacts = ({profile, isOwner, goToEditMode}) => {
     return (
         <div className={Style.info}>
-            <h2 className={Style.text}>Contact Information</h2>
+            <div className={Style.info_box}>
+                <h2 className={Style.text_h2}>Contact Information</h2>
+                {isOwner && <button className={Style.button} onClick={goToEditMode}><img src={button_editor} alt={'img'}/></button>}
+            </div>
             <div className={Style.contacts_box}>
-                {isOwner && <button onClick={goToEditMode}>edit</button>}
-                <p>About me: {profile.aboutMe}</p>
-                <p>Looking for a job: {profile.lookingForAJob ? 'yes' : 'no'}</p>
+                <h3 className={Style.text}>About me: <span className={Style.text_contents}>{profile.aboutMe}</span></h3>
+                <h3 className={Style.text}>Looking for a job: <span className={Style.text_contents}>{profile.lookingForAJob ? 'yes' : 'no'}</span></h3>
                 {
-                    profile.lookingForAJob && <p>
-                        My professional skills: {profile.lookingForAJobDescription}
-                    </p>
+                    profile.lookingForAJob && <h3 className={Style.text}>
+                        My professional skills: <span className={Style.text_contents}>{profile.lookingForAJobDescription}</span>
+                    </h3>
                 }
                 {
                     Object.keys(profile.contacts).map(key => {

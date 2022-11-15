@@ -3,28 +3,51 @@ import Style from "./ProfileDataForm.module.css";
 import {Input} from "../../../common/FormsControls/FormsControls";
 import {Field, reduxForm} from "redux-form";
 
-const ProfileDataForm = ({handleSubmit, profile, error}) => {
+const ProfileDataForm = ({handleSubmit, profile, error, setEditMode}) => {
+    const backForm = () => {
+        setEditMode(false)
+    }
+
     return (
         <div className={Style.box}>
-                <h2 className={Style.text}>Edit Information</h2>
+            <div className={Style.box_top}>
+                <button className={Style.button} onClick={backForm}>{"<"}</button>
+                <h2 className={Style.text_h2}>Edit Information</h2>
+            </div>
+                {error && <div className={Style.formSummaryError}>{error}</div>}
                 <form className={Style.contacts_box} onSubmit={handleSubmit}>
-                    <div>Full name: <Field placeholder={'Full Name'} name={'fullName'} component={Input}/></div>
-                    <div>About me: <Field placeholder={'About me'} name={'aboutMe'} component={Input}/></div>
-                    <div>Looking for a job: <Field name={'lookingForAJob'} component='input' type={'checkbox'}/></div>
-                    <div>My professional skills:
-                        <Field placeholder={'My professional skills:'}
-                               name={'lookingForAJobDescription'} component={Input}/>
+                    <div><span className={Style.contexts}>Full name:</span>
+                        <Field className={Style.input}
+                               placeholder={'Full Name'}
+                               name={'fullName'}
+                               component={Input}/>
+                    </div>
+                    <div><span className={Style.contexts}>About me:</span>
+                        <Field className={Style.input}
+                               placeholder={'About me'}
+                               name={'aboutMe'}
+                               component={Input}/>
+                    </div>
+                    <div className={Style.checkbox}><span className={Style.contexts}>Looking for a job:</span>
+                        <Field className={Style.input}
+                               name={'lookingForAJob'}
+                               component='input'
+                               type={'checkbox'}/>
+                    </div>
+                    <div><span className={Style.contexts}>My professional skills:</span>
+                        <Field className={Style.input}
+                               placeholder={'My professional skills:'}
+                               name={'lookingForAJobDescription'}
+                               component={Input}/>
                     </div>
                     {
                         Object.keys(profile.contacts).map(key => {
                             return <div key={key}>
-                                {key} : <Field placeholder={key} name={'contacts.' + key} component={Input}/>
+                                <span className={Style.contexts}>{key}</span> : <Field className={Style.input} placeholder={key} name={'contacts.' + key} component={Input}/>
                             </div>
                         })
                     }
-                    {error && <div className={Style.formSummaryError}>{error}</div>
-                    }
-                    <button >save</button>
+                    <button className={Style.button_save}>Save</button>
                 </form>
         </div>
     )
