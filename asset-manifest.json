@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-educational-application/static/css/main.1b62437b.css",
-    "main.js": "/react-educational-application/static/js/main.bb24122e.js",
+    "main.css": "/react-educational-application/static/css/main.4cd8f168.css",
+    "main.js": "/react-educational-application/static/js/main.8e07178f.js",
     "static/css/998.1929bc13.chunk.css": "/react-educational-application/static/css/998.1929bc13.chunk.css",
     "static/js/998.a2992a2c.chunk.js": "/react-educational-application/static/js/998.a2992a2c.chunk.js",
     "static/css/415.eef2501f.chunk.css": "/react-educational-application/static/css/415.eef2501f.chunk.css",
@@ -12,8 +12,9 @@
     "static/media/img_avatar.png": "/react-educational-application/static/media/img_avatar.3acd15aaee852151cd2b.png",
     "index.html": "/react-educational-application/index.html",
     "static/media/preloader.svg": "/react-educational-application/static/media/preloader.7f4b2fb7cd2df81d8aa04a40d5a01261.svg",
-    "main.1b62437b.css.map": "/react-educational-application/static/css/main.1b62437b.css.map",
-    "main.bb24122e.js.map": "/react-educational-application/static/js/main.bb24122e.js.map",
+    "static/media/button-editor.svg": "/react-educational-application/static/media/button-editor.a21e6a55e025919153e5dc0329c0c062.svg",
+    "main.4cd8f168.css.map": "/react-educational-application/static/css/main.4cd8f168.css.map",
+    "main.8e07178f.js.map": "/react-educational-application/static/js/main.8e07178f.js.map",
     "998.1929bc13.chunk.css.map": "/react-educational-application/static/css/998.1929bc13.chunk.css.map",
     "998.a2992a2c.chunk.js.map": "/react-educational-application/static/js/998.a2992a2c.chunk.js.map",
     "415.eef2501f.chunk.css.map": "/react-educational-application/static/css/415.eef2501f.chunk.css.map",
@@ -23,7 +24,7 @@
     "787.57b857a7.chunk.js.map": "/react-educational-application/static/js/787.57b857a7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1b62437b.css",
-    "static/js/main.bb24122e.js"
+    "static/css/main.4cd8f168.css",
+    "static/js/main.8e07178f.js"
   ]
 }
