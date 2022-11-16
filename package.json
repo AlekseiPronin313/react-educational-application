@@ -2,7 +2,7 @@
   "name": "react-educational-application",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://aleksey313.github.io/react-educational-application/",
+  "homepage": "https://alekseipronin313.github.io/react-educational-application/",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
