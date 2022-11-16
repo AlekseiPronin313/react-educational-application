@@ -15,7 +15,7 @@ const ProfileDataForm = ({handleSubmit, profile, error, setEditMode}) => {
                 <h2 className={Style.text_h2}>Edit Information</h2>
             </div>
                 {error && <div className={Style.formSummaryError}>{error}</div>}
-                <form className={Style.contacts_box} onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <div><span className={Style.contexts}>Full name:</span>
                         <Field className={Style.input}
                                placeholder={'Full Name'}
