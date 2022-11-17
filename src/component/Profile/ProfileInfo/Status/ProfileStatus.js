@@ -33,7 +33,7 @@ const ProfileStatus = (props) => {
                                   onDoubleClick={activateEditMode}>{props.status || '___'}</span>
                             :
                             <input className={Style.input} onChange={onStatusChange} autoFocus={true}
-                                   maxLength='299' onBlur={deactivateEditMode} value={status}/>
+                                   maxLength='100' onBlur={deactivateEditMode} value={status}/>
                         }
                     </div>
                     :

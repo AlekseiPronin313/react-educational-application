@@ -1,5 +1,5 @@
 import React, {Suspense} from "react";
-import {HashRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import Style from './App.module.css'
 import Navbar from "./Navbar/Navbar";
 import News from "./News/News";
@@ -18,8 +18,16 @@ const UsersContainer = React.lazy(() => import('./Users/UsersContainer'));
 const Login = React.lazy(() => import('./Login/Login'));
 
 class App extends React.Component {
+    catchAllUnhandledErrors = () => {
+        alert('Some error has occurred')
+    }
+
     componentDidMount() {
         this.props.initializeApp()
+        window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors)
+    }
+    componentWillUnmount() {
+        window.removeEventListener('unhandledrejection', this.catchAllUnhandledErrors)
     }
 
     render() {
@@ -33,6 +41,7 @@ class App extends React.Component {
                 <div className={Style.main}>
                     <Suspense fallback={<Preloader/>}>
                     <Routes>
+                        <Route path="/" element={<Navigate to="/profile" />} />
                         <Route path='/profile' element={<ProfileContainer/>}>
                             <Route path=':userId' element={<ProfileContainer/>}/>
                         </Route>
@@ -59,13 +68,13 @@ const AppContainer = compose(
     connect(mapStateToProps, {initializeApp})) (App);
 
 const JsApp = () => {
-    return <HashRouter>
+    return <BrowserRouter>
         <React.StrictMode>
             <Provider store={store}>
                 <AppContainer/>
             </Provider>
         </React.StrictMode>
-    </HashRouter>
+    </BrowserRouter>
 }
 
 export default JsApp
