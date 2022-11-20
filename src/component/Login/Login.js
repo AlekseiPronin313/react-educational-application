@@ -2,7 +2,7 @@ import React from "react";
 import Style from './Login.module.css'
 import LoginReduxForm from "./LoginForm";
 import {connect} from "react-redux";
-import {login} from "../../redux/auth-reducer";
+import {login} from "../../redux/auth-reducer.ts";
 import {Navigate} from "react-router-dom";
 
 const Login = ({login, isAuth, captchaUrl}) => {

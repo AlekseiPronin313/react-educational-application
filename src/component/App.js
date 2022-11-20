@@ -9,9 +9,9 @@ import ProfileContainer, {withRouter} from "./Profile/ProfileContainer";
 import HeaderContainer from "./Header/HeaderContainer";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
-import {initializeApp} from "../redux/app-reducer";
 import Preloader from "./common/Preloader/Preloader";
 import store from "../redux/redux-store";
+import {initializeApp} from "../redux/app-reducer.ts";
 
 const DialogsContainer = React.lazy(() => import('./Dialogs/DialogsContainer'));
 const UsersContainer = React.lazy(() => import('./Users/UsersContainer'));
@@ -42,6 +42,7 @@ class App extends React.Component {
                     <Suspense fallback={<Preloader/>}>
                     <Routes>
                         <Route path="/" element={<Navigate to="/profile" />} />
+                        <Route path="*" element={<Navigate to="/profile" />} />
                         <Route path='/profile' element={<ProfileContainer/>}>
                             <Route path=':userId' element={<ProfileContainer/>}/>
                         </Route>
