@@ -1,5 +1,5 @@
 import React from "react";
-import Style from './Dialogs.module.css'
+import Style from './Dialogs.module.scss'
 import {reduxForm, Field} from "redux-form";
 import {Input} from "../common/FormsControls/FormsControls";
 import {maxLengthCreator, required} from "../../utils/validators";

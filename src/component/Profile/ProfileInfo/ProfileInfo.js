@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Style from './ProfileInfo.module.css'
+import Style from './ProfileInfo.module.scss'
 import img_avatar from './../../../assets/image/img_avatar.png'
 import ProfileStatus from "./Status/ProfileStatus";
 import Paginator from "../../common/Paginator/Paginator";

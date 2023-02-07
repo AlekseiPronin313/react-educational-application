@@ -1,5 +1,5 @@
 import React from "react";
-import Style from './FormsControls.module.css'
+import Style from './FormsControls.module.scss'
 import classNames from "classnames";
 
 export const Input = ({input, meta: {touched, error}, ...props}) => {

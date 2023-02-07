@@ -1,5 +1,5 @@
 import React from "react";
-import Style from './Dialogs.module.css'
+import Style from './Dialogs.module.scss'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import LoginReduxForm from "./DialogsForm";

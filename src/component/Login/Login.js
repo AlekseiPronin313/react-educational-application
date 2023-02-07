@@ -1,5 +1,5 @@
 import React from "react";
-import Style from './Login.module.css'
+import Style from './Login.module.scss'
 import LoginReduxForm from "./LoginForm";
 import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer.ts";

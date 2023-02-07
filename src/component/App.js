@@ -1,6 +1,6 @@
 import React, {Suspense} from "react";
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
-import Style from './App.module.css'
+import Style from './App.module.scss'
 import Navbar from "./Navbar/Navbar";
 import News from "./News/News";
 import Music from "./Music/Music";

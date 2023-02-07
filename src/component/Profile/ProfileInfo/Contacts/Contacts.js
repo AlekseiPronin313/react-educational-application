@@ -1,5 +1,5 @@
 import React from "react";
-import Style from "../ProfileInfo.module.css";
+import Style from "../ProfileInfo.module.scss";
 import button_editor from '../../../../assets/image/button-editor.svg'
 
 export const ContactsData = ({contactTitle, contactValue}) => {

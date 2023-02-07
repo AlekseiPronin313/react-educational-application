@@ -1,5 +1,5 @@
 import React from "react";
-import Style from './Profile.module.css'
+import Style from './Profile.module.scss'
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 

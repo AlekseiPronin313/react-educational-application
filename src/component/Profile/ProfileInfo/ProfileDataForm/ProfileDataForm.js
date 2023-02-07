@@ -1,5 +1,5 @@
 import React from "react";
-import Style from "./ProfileDataForm.module.css";
+import Style from "./ProfileDataForm.module.scss";
 import {Input} from "../../../common/FormsControls/FormsControls";
 import {Field, reduxForm} from "redux-form";
 
