@@ -1,9 +1,15 @@
-import React, {useEffect, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 import Style from './ProfileStatus.module.scss'
 
-const ProfileStatus = (props) => {
+type PropsType = {
+    status: string
+    isOwner: boolean
+    updateStatus: (status: string) => void
+}
 
-    const [editMode, setEditMode] = useState(false)
+const ProfileStatus: React.FC<PropsType> = (props) => {
+
+    const [editMode, setEditMode] = useState<boolean>(false)
     const [status, setStatus] = useState(props.status)
 
     useEffect(() => {
@@ -19,7 +25,7 @@ const ProfileStatus = (props) => {
         props.updateStatus(status)
     }
 
-    const onStatusChange = (e) => {
+    const onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
         setStatus(e.currentTarget.value)
     }
 
@@ -33,7 +39,7 @@ const ProfileStatus = (props) => {
                                   onDoubleClick={activateEditMode}>{props.status || '___'}</span>
                             :
                             <input className={Style.input} onChange={onStatusChange} autoFocus={true}
-                                   maxLength='100' onBlur={deactivateEditMode} value={status}/>
+                                   onBlur={deactivateEditMode} value={status}/>
                         }
                     </div>
                     :
