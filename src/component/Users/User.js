@@ -1,5 +1,5 @@
 import React from "react";
-import Style from './Users.module.css'
+import Style from './Users.module.scss'
 import img_avatar from './../../assets/image/img_avatar.png'
 import {NavLink} from "react-router-dom";
 
