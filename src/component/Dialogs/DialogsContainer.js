@@ -1,4 +1,3 @@
-import React from "react";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {sendMessageCreator} from "../../redux/dialogs-reducer.ts";
@@ -6,7 +5,6 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
 let mapStateToProps = (state) => {
-    console.log(state)
     return {
         dialogsPage: state.dialogsPage
     }
