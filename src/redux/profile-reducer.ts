@@ -1,6 +1,7 @@
 import {profileAPI} from "../api/api"
 import {stopSubmit} from "redux-form"
 import {PhotosType, PostType, ProfileType} from "../types/types";
+import {Dispatch} from "redux";
 
 const ADD_POST = 'profile/ADD-POST'
 const SET_USER_PROFILE = 'profile/SET_USER_PROFILE'
@@ -24,7 +25,7 @@ let initialState = {
 
 export type InitialStateType = typeof initialState
 
-const profileReducer = (state = initialState, action:any): InitialStateType => {
+const profileReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
@@ -67,6 +68,8 @@ const profileReducer = (state = initialState, action:any): InitialStateType => {
     }
 }
 
+type ActionsTypes = AddPostActionCreatorType | SetUserProfileType | SetStatusType |DeletePostType | SavePhotoSuccessType | ToggleIsFetchingType
+
 type AddPostActionCreatorType = {
     type: typeof  ADD_POST
     newPostText: string
@@ -99,23 +102,23 @@ type ToggleIsFetchingType = {
 }
 export const toggleIsFetching = (isFetching: boolean): ToggleIsFetchingType => ({type: TOGGLE_IS_FETCHING, isFetching })
 
-export const getUserProfile = (userId:number) => async (dispatch: any) => {
+export const getUserProfile = (userId:number) => async (dispatch: Dispatch<ActionsTypes>) => {
     dispatch(toggleIsFetching(true))
     const data = await profileAPI.getProfile(userId)
         dispatch(toggleIsFetching(false))
         dispatch(setUserProfile(data))
 }
-export const getStatus = (userId:number) => async (dispatch: any) => {
+export const getStatus = (userId:number) => async (dispatch: Dispatch<ActionsTypes>) => {
     const data = await profileAPI.getStatus(userId)
         dispatch(setStatus(data.data))
 }
-export const updateStatus = (status:string) => async (dispatch: any) => {
+export const updateStatus = (status:string) => async (dispatch: Dispatch<ActionsTypes>) => {
     const data = await profileAPI.updateStatus(status)
             if (data.resultCode === 0) {
                 dispatch(setStatus(status))
             }
 }
-export const savePhoto = (file: any) => async (dispatch: any) => {
+export const savePhoto = (file: any) => async (dispatch: Dispatch<ActionsTypes>) => {
     const data = await profileAPI.savePhoto(file)
             if (data.resultCode === 0) {
                 dispatch(savePhotoSuccess(data.data.photos))
