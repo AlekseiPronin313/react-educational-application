@@ -1,7 +1,7 @@
 import React from "react";
 import Style from './Settings.module.scss'
 
-const Settings = (props) => {
+const Settings: React.FC = () => {
     return (
         <div>
             Settings
