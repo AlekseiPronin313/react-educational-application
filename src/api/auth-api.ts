@@ -1,10 +1,4 @@
-import {instance, ResultCodesEnum} from "./api";
-
-interface ResponseType<D = {}, RC = ResultCodesEnum> {
-    data: D
-    messages: Array<string>
-    resultCode: RC
-}
+import {instance, ResponseType} from "./api";
 
 type MeResponseDataType = {
         id: number
