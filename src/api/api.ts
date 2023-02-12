@@ -24,7 +24,7 @@ export interface GetItemsType {
     error: string | null
 }
 
-export interface ResponseType<D = {}, RC = ResultCodesEnum | ResultCodesWithCaptcha> {
+export interface APIResponseType<D = {}, RC = ResultCodesEnum | ResultCodesWithCaptcha> {
     data: D
     messages: Array<string>
     resultCode: RC
