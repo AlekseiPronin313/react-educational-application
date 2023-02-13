@@ -3,9 +3,20 @@ import Style from './Dialogs.module.scss'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import LoginReduxForm from "./DialogsForm";
+import {InitialStateType} from "../../redux/dialogs-reducer";
 
-const Dialogs = (props) => {
-    const addNewMessage = (values) => {
+type PropsType = {
+    dialogsPage: InitialStateType
+    sendMessage: (messageText: string) => void
+}
+
+export type NewMessageFormType = {
+    dialogs : string
+}
+
+const Dialogs: React.FC<PropsType> = (props) => {
+
+    const addNewMessage = (values: NewMessageFormType) => {
         props.sendMessage(values.dialogs)
     }
 
