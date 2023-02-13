@@ -1,10 +1,8 @@
 import {ResultCodesEnum, ResultCodesWithCaptcha} from "../api/api";
-import {stopSubmit} from "redux-form";
+import {FormAction, stopSubmit} from "redux-form";
 import {authAPI} from "../api/auth-api";
 import {securityAPI} from "../api/security-api";
-
-const SET_USER_DATA = 'auth/SET_USER_DATA';
-const GET_CAPTCHA_URL_SUCCESS = 'auth/GET_CAPTCHA_URL_SUCCESS';
+import {BaseThunkType, InferActionsType} from "./redux-store";
 
 const initialState = {
     id: null as number | null,
@@ -15,15 +13,17 @@ const initialState = {
 }
 
 export type InitialStateType = typeof initialState
+type ActionsTypes = InferActionsType<typeof actions>
+type ThunkType = BaseThunkType<ActionsTypes | FormAction>
 
-const authReducer = (state = initialState, action: any): InitialStateType => {
+const authReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
-        case SET_USER_DATA:
+        case 'SET_USER_DATA':
             return {
                 ...state,
                 ...action.payload,
             }
-            case GET_CAPTCHA_URL_SUCCESS:
+            case 'GET_CAPTCHA_URL_SUCCESS':
             return {
                 ...state,
                 ...action.payload
@@ -33,38 +33,22 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
     }
 }
 
-type SetAuthUserDataPayloadType = {
-    id: number | null
-    email: string | null
-    login: string | null
-    isAuth: boolean
+export const actions = {
+    setAuthUserData: (id:number | null, email:string | null, login:string | null, isAuth:boolean) => ({
+        type: 'SET_USER_DATA', payload: {id, email, login, isAuth}} as const),
+    setCaptchaUrlSuccess: (captchaUrl: string) => ({
+        type: 'GET_CAPTCHA_URL_SUCCESS', payload: {captchaUrl}} as const),
 }
 
-type SetAuthUserDataType = {
-    type: typeof SET_USER_DATA,
-    payload: SetAuthUserDataPayloadType
-}
-
-type SetCaptchaUrlSuccessType = {
-    type: typeof GET_CAPTCHA_URL_SUCCESS
-    payload: {captchaUrl: string}
-}
-
-export const setAuthUserData = (id:number | null, email:string | null, login:string | null, isAuth:boolean): SetAuthUserDataType => ({
-    type: SET_USER_DATA, payload: {id, email, login, isAuth}})
-
-export const setCaptchaUrlSuccess = (captchaUrl: string): SetCaptchaUrlSuccessType => ({
-    type: GET_CAPTCHA_URL_SUCCESS, payload: {captchaUrl}})
-
-export const getAuthUserData = () => async (dispatch:any) => {
+export const getAuthUserData = (): ThunkType => async (dispatch) => {
     const meData = await authAPI.getAuth()
             if (meData.resultCode === ResultCodesEnum.Success) {
                 let {id, email, login} = meData.data
-                dispatch(setAuthUserData(id, email, login, true))
+                dispatch(actions.setAuthUserData(id, email, login, true))
         }
 }
 
-export const login = (email: string, password: string, rememberMe: boolean, captcha: any) => async (dispatch: any) => {
+export const login = (email: string, password: string, rememberMe: boolean, captcha: any): ThunkType => async (dispatch) => {
     const loginData = await authAPI.login(email, password, rememberMe, captcha)
             if (loginData.resultCode === ResultCodesEnum.Success) {
                 dispatch(getAuthUserData())
@@ -77,17 +61,17 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
             }
 }
 
-export const getCaptchaUrl = () => async (dispatch:any) => {
+export const getCaptchaUrl = (): ThunkType => async (dispatch) => {
     const data = await securityAPI.getCaptchaUrl()
     const captchaUrl = data.url
-    dispatch(setCaptchaUrlSuccess(captchaUrl))
+    dispatch(actions.setCaptchaUrlSuccess(captchaUrl))
 
 }
 
-export const logout = () => async (dispatch:any) => {
+export const logout = (): ThunkType => async (dispatch) => {
     const data = await authAPI.logout()
         if (data.resultCode === 0) {
-            dispatch(setAuthUserData(null, null, null, false))
+            dispatch(actions.setAuthUserData(null, null, null, false))
         }
 }
 

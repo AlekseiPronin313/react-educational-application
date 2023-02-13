@@ -1,7 +1,6 @@
 import {updateObjectInArray} from "../utils/object-helpers";
 import {UserType} from "../types/types";
-import {ThunkAction} from "redux-thunk";
-import {AppStateType, InferActionsType} from "./redux-store";
+import {BaseThunkType, InferActionsType} from "./redux-store";
 import {Dispatch} from "redux";
 import {userAPI} from "../api/users-api";
 
@@ -74,8 +73,7 @@ export const actions = {
         type: 'TOGGLE_IS_FOLLOWING_PROGRESS', isFetching, userId} as const),
 }
 
-
-type ThunkType = ThunkAction<Promise<void>, AppStateType, undefined, ActionsTypes>
+type ThunkType = BaseThunkType<ActionsTypes>
 
 export const requestUsers = (page: number, pageSize: number): ThunkType => {
     return async (dispatch: Dispatch<ActionsTypes>) => {
