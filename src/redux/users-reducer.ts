@@ -5,6 +5,8 @@ import {Dispatch} from "redux";
 import {userAPI} from "../api/users-api";
 
 type InitialStateType = typeof initialState
+type ThunkType = BaseThunkType<ActionsTypes>
+type ActionsTypes = InferActionsType<typeof actions>
 
 const initialState = {
     users: [] as Array<UserType>,
@@ -59,8 +61,6 @@ const usersReducer = (state = initialState, action: ActionsTypes): InitialStateT
     }
 }
 
-type ActionsTypes = InferActionsType<typeof actions>
-
 export const actions = {
     followSuccess: (userId: number) => ({type: 'FOLLOW', userId} as const),
     unfollowSuccess: (userId: number) => ({type: 'UNFOLLOW', userId} as const),
@@ -72,8 +72,6 @@ export const actions = {
     toggleFollowingProgress: (isFetching: boolean, userId: number) => ({
         type: 'TOGGLE_IS_FOLLOWING_PROGRESS', isFetching, userId} as const),
 }
-
-type ThunkType = BaseThunkType<ActionsTypes>
 
 export const requestUsers = (page: number, pageSize: number): ThunkType => {
     return async (dispatch: Dispatch<ActionsTypes>) => {
