@@ -10,15 +10,20 @@ import HeaderContainer from "./Header/HeaderContainer";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import Preloader from "./common/Preloader/Preloader";
-import store from "../redux/redux-store";
-import {initializeApp} from "../redux/app-reducer.ts";
+import store, {AppStateType} from "../redux/redux-store";
+import {initializeApp} from "../redux/app-reducer";
 
 const DialogsContainer = React.lazy(() => import('./Dialogs/DialogsContainer'));
 const UsersContainer = React.lazy(() => import('./Users/UsersContainer'));
 const Login = React.lazy(() => import('./Login/Login'));
 
-class App extends React.Component {
-    catchAllUnhandledErrors = () => {
+type MapPropsType = ReturnType<typeof mapStateToProps>
+type DispatchPropsType = {
+    initializeApp: () => void
+}
+
+class App extends React.Component<MapPropsType & DispatchPropsType> {
+    catchAllUnhandledErrors = (promise: PromiseRejectionEvent) => {
         alert('Some error has occurred')
     }
 
@@ -60,15 +65,15 @@ class App extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType) => ({
     initialized: state.app.initialized
 })
 
-const AppContainer = compose(
+const AppContainer = compose<React.ComponentType>(
     withRouter,
     connect(mapStateToProps, {initializeApp})) (App);
 
-const JsApp = () => {
+const JsApp: React.FC = () => {
     return <BrowserRouter>
         <React.StrictMode>
             <Provider store={store}>
