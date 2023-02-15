@@ -1,12 +1,19 @@
 import React from "react";
 import Style from './MyPosts.module.scss'
-import {reduxForm, Field} from "redux-form";
+import {reduxForm, Field, InjectedFormProps} from "redux-form";
 import { maxLengthCreator, required} from "../../../utils/validators";
 import {Input} from "../../common/FormsControls/FormsControls";
 
 const maxLength = maxLengthCreator(2000)
 
-const MyPostsForm = (props) => {
+interface PropsType {
+
+}
+
+export type AddPostFormValuesType = {
+    posts: string
+}
+const MyPostsForm: React.FC<InjectedFormProps<AddPostFormValuesType, PropsType> & PropsType> = (props) => {
     return (
         <form className={Style.box} onSubmit={props.handleSubmit}>
             <div className={Style.box_input}>
@@ -22,7 +29,7 @@ const MyPostsForm = (props) => {
     )
 }
 
-const MyPostsReduxForm = reduxForm({form: 'myPosts'}) (MyPostsForm)
+const MyPostsReduxForm = reduxForm<AddPostFormValuesType, PropsType>({form: 'myPosts'}) (MyPostsForm)
 
 
 export default MyPostsReduxForm
