@@ -1,17 +1,27 @@
-import React, {useState} from "react";
+import React, {ChangeEvent, useState} from "react";
 import Style from './ProfileInfo.module.scss'
 import img_avatar from './../../../assets/image/img_avatar.png'
 import ProfileStatus from "./Status/ProfileStatus";
 import Paginator from "../../common/Paginator/Paginator";
 import Contacts from "./Contacts/Contacts";
 import ProfileReduxForm from "./ProfileDataForm/ProfileDataForm";
+import {ProfileType} from "../../../types/types";
 
-const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile}) => {
+type PropsType = {
+    profile: ProfileType
+    status: string
+    updateStatus: (status: string) => void
+    isOwner: boolean
+    savePhoto: (file : File) => void
+    saveProfile: (profile: ProfileType) => Promise<any>
+}
+
+const ProfileInfo: React.FC<PropsType> = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile}) => {
     const [editMode, setEditMode] = useState(false)
 
     const goToEditMode = () => {setEditMode(true)}
 
-    const onSubmit = (formData) => {
+    const onSubmit = (formData: ProfileType) => {
         saveProfile(formData)
             .then(() => {
                 setEditMode(false)
@@ -22,8 +32,8 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
         return <Paginator/>
     }
 
-    const onMainPhotoSelected = (e) => {
-        if (e.target.files.length) {
+    const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files?.length) {
             savePhoto(e.target.files[0])
         }
     }
