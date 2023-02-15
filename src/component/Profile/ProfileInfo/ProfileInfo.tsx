@@ -2,7 +2,6 @@ import React, {ChangeEvent, useState} from "react";
 import Style from './ProfileInfo.module.scss'
 import img_avatar from './../../../assets/image/img_avatar.png'
 import ProfileStatus from "./Status/ProfileStatus";
-import Paginator from "../../common/Paginator/Paginator";
 import Contacts from "./Contacts/Contacts";
 import ProfileReduxForm from "./ProfileDataForm/ProfileDataForm";
 import {ProfileType} from "../../../types/types";
@@ -28,9 +27,9 @@ const ProfileInfo: React.FC<PropsType> = ({profile, status, updateStatus, isOwne
             })
     }
 
-    if (!profile) {
-        return <Paginator/>
-    }
+    // if (!profile) {
+    //     return <Paginator/>
+    // }
 
     const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files?.length) {
@@ -60,7 +59,6 @@ const ProfileInfo: React.FC<PropsType> = ({profile, status, updateStatus, isOwne
                 </div>
             </div>
             {editMode ? <ProfileReduxForm
-                    setEditMode={setEditMode}
                     initialValues={profile}
                     onSubmit={onSubmit}
                     profile={profile}/>
