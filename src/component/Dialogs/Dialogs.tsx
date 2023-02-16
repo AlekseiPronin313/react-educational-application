@@ -23,10 +23,13 @@ const Dialogs: React.FC<PropsType> = (props) => {
     const message = [...props.dialogsPage.messages]
         .map(message => <Message key={message.id} message={message.message}/>)
 
+    const dialogs = [...props.dialogsPage.dialogs]
+        .map(dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id}/>)
+
     return (
         <div className={Style.dialogs}>
             <div className={Style.dialogs_items}>
-                <DialogItem props={props.dialogsPage.dialogs}/>
+                {dialogs}
             </div>
             <div className={Style.messages}>
                 <div className={Style.box_message}>
