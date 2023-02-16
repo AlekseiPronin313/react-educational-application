@@ -11,7 +11,7 @@ type PropsType = {
 }
 
 export type NewMessageFormType = {
-    dialogs : string
+    dialogs: string
 }
 
 const Dialogs: React.FC<PropsType> = (props) => {
@@ -20,6 +20,9 @@ const Dialogs: React.FC<PropsType> = (props) => {
         props.sendMessage(values.dialogs)
     }
 
+    const message = [...props.dialogsPage.messages]
+        .map(message => <Message key={message.id} message={message.message}/>)
+
     return (
         <div className={Style.dialogs}>
             <div className={Style.dialogs_items}>
@@ -27,10 +30,10 @@ const Dialogs: React.FC<PropsType> = (props) => {
             </div>
             <div className={Style.messages}>
                 <div className={Style.box_message}>
-                    <Message props={props.dialogsPage.messages}/>
+                    {message}
                 </div>
-                    <LoginReduxForm onSubmit={addNewMessage}
-                    />
+                <LoginReduxForm onSubmit={addNewMessage}
+                />
             </div>
         </div>
     )
