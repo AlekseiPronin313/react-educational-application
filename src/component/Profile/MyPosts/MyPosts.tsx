@@ -11,16 +11,21 @@ export type DispatchPropsType = {
     addPost: (posts: string) => void
 }
 
-const MyPosts: React.FC<MapPropsType & DispatchPropsType> = React.memo(props => {
+const MyPosts: React.FC<MapPropsType & DispatchPropsType> = React.memo(({addPost, posts}) => {
+
+    const postsElements = [...posts]
+        .reverse()
+        .map(post => <Post key={post.id} message={post.message} likesCount={post.likesCount}/>)
+
     const addNewPosts = (values: AddPostFormValuesType) => {
-        props.addPost(values.posts)
+        addPost(values.posts)
     }
 
     return (
         <div className={Style.myPosts}>
             my post
             <MyPostsReduxForm onSubmit={addNewPosts}/>
-            <Post props={props.posts}/>
+            {postsElements}
         </div>
     )
 })
