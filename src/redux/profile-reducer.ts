@@ -13,7 +13,6 @@ let initialState = {
         profile: null as ProfileType | null,
         isFetching: false,
         status: '',
-        newPostText: ''
 }
 
 export type InitialStateType = typeof initialState
@@ -30,8 +29,7 @@ const profileReducer = (state = initialState, action: ActionsTypes): InitialStat
             }
             return {
                 ...state,
-                posts: [newPost, ...state.posts],
-                newPostText: '',
+                posts: [newPost, ...state.posts]
             }
         case 'SET_USER_PROFILE':
             return {

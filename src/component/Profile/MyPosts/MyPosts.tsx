@@ -4,12 +4,14 @@ import Post from "./Posts/Post";
 import MyPostsReduxForm, {AddPostFormValuesType} from "./MyPostsForm";
 import {PostType} from "../../../types/types";
 
-type PropsType = {
-    profilePage: Array<PostType>
+export type MapPropsType = {
+    posts: Array<PostType>
+}
+export type DispatchPropsType = {
     addPost: (posts: string) => void
 }
 
-const MyPosts: React.FC<PropsType> = React.memo(props => {
+const MyPosts: React.FC<MapPropsType & DispatchPropsType> = React.memo(props => {
     const addNewPosts = (values: AddPostFormValuesType) => {
         props.addPost(values.posts)
     }
@@ -18,7 +20,7 @@ const MyPosts: React.FC<PropsType> = React.memo(props => {
         <div className={Style.myPosts}>
             my post
             <MyPostsReduxForm onSubmit={addNewPosts}/>
-            <Post props={props.profilePage}/>
+            <Post props={props.posts}/>
         </div>
     )
 })

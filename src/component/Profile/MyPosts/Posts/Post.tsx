@@ -2,8 +2,9 @@ import React from "react";
 import Style from './Post.module.scss';
 
 const Post = (props) => {
+    console.log(props)
     return (
-        props.props.posts.map((post, id) => {
+        props.posts.map((post, id) => {
             return (
                 <div key={id}>
                     <img className={Style.img} src='https://img2.akspic.ru/previews/5/8/2/8/6/168285/168285-astronavt-risovanie-kosmos-kosmicheskoe_prostranstvo-multfilm-500x.jpg' alt='post_img'/>
