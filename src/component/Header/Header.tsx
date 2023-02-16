@@ -2,13 +2,16 @@ import React from "react";
 import Style from './Header.module.scss'
 import {NavLink} from "react-router-dom";
 
-type PropsType = {
+export type MapPropsType = {
     isAuth: boolean
-    login: string
+    login: string | null
+}
+
+export type DispatchPropsType = {
     logout: () => void
 }
 
-const Header: React.FC<PropsType> = (props) =>{
+const Header: React.FC<MapPropsType & DispatchPropsType> = (props) =>{
     return (
         <header className={Style.header}>
             <img className={Style.img} src='https://cdn-icons-png.flaticon.com/512/4147/4147869.png' alt='img_header'/>
