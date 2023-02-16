@@ -2,7 +2,7 @@ import React from "react";
 import Style from './Navbar.module.scss'
 import {NavLink} from "react-router-dom";
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
     return (
         <nav className={Style.nav}>
             <div className={Style.box}>
