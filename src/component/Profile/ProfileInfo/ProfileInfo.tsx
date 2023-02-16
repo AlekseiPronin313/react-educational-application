@@ -5,6 +5,7 @@ import ProfileStatus from "./Status/ProfileStatus";
 import Contacts from "./Contacts/Contacts";
 import ProfileReduxForm from "./ProfileDataForm/ProfileDataForm";
 import {ProfileType} from "../../../types/types";
+import Preloader from "../../common/Preloader/Preloader";
 
 type PropsType = {
     profile: ProfileType
@@ -27,9 +28,9 @@ const ProfileInfo: React.FC<PropsType> = ({profile, status, updateStatus, isOwne
             })
     }
 
-    // if (!profile) {
-    //     return <Paginator/>
-    // }
+    if (!profile) {
+        return < Preloader/>
+    }
 
     const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files?.length) {
