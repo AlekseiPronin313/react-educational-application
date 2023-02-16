@@ -1,8 +1,16 @@
 import React from "react";
 import Style from './FormsControls.module.scss'
 import classNames from "classnames";
+import {WrappedFieldProps} from "redux-form";
 
-export const Input = ({input, meta: {touched, error}, ...props}) => {
+type PropsType = {
+    meta: {
+        touched: boolean
+        error: string
+    }
+}
+
+export const Input: React.FC<PropsType & WrappedFieldProps> = ({input, meta: {touched, error}, ...props}) => {
 
     const hasError = touched && error
 
