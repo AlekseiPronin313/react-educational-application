@@ -1,5 +1,5 @@
 import React, {Suspense} from "react";
-import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+import {HashRouter, Navigate, Route, Routes} from "react-router-dom";
 import Style from './App.module.scss'
 import Navbar from "./Navbar/Navbar";
 import News from "./News/News";
@@ -74,13 +74,13 @@ const AppContainer = compose<React.ComponentType>(
     connect(mapStateToProps, {initializeApp})) (App);
 
 const JsApp: React.FC = () => {
-    return <BrowserRouter>
+    return <HashRouter>
         <React.StrictMode>
             <Provider store={store}>
                 <AppContainer/>
             </Provider>
         </React.StrictMode>
-    </BrowserRouter>
+    </HashRouter>
 }
 
 export default JsApp
