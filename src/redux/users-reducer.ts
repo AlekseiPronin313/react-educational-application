@@ -4,7 +4,7 @@ import {BaseThunkType, InferActionsType} from "./redux-store";
 import {Dispatch} from "redux";
 import {userAPI} from "../api/users-api";
 
-type InitialStateType = typeof initialState
+export type InitialStateType = typeof initialState
 type ThunkType = BaseThunkType<ActionsTypes>
 type ActionsTypes = InferActionsType<typeof actions>
 
