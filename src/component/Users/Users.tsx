@@ -3,6 +3,7 @@ import Style from './Users.module.scss'
 import Paginator from "../common/Paginator/Paginator";
 import User from "./User";
 import {UserType} from "../../types/types";
+import {UsersSerchForm} from "./UsersSerchForm";
 
 type PropsType = {
     currentPage: number
@@ -15,10 +16,13 @@ type PropsType = {
     follow: (userId: number) => void
 }
 
-const Users: React.FC<PropsType> = ({currentPage, onPageChanged, totalItemsCount,
-                                        pageSize, users, ...props}) => {
+const Users: React.FC<PropsType> = ({
+                                        currentPage, onPageChanged, totalItemsCount,
+                                        pageSize, users, ...props
+                                    }) => {
     return (
         <div className={Style.users}>
+            <UsersSerchForm/>
             <Paginator currentPage={currentPage}
                        onPageChanged={onPageChanged}
                        totalItemsCount={totalItemsCount}
