@@ -3,7 +3,7 @@ import Style from './Users.module.scss'
 import Paginator from "../common/Paginator/Paginator";
 import User from "./User";
 import {UserType} from "../../types/types";
-import {UsersSerchForm} from "./UsersSerchForm";
+import {UsersSearchForm} from "./UsersSeachForm";
 import {FilterType} from "../../redux/users-reducer";
 
 type PropsType = {
@@ -24,7 +24,7 @@ const Users: React.FC<PropsType> = ({
                                     }) => {
     return (
         <div className={Style.users}>
-            <UsersSerchForm onFilterChanged={props.onFilterChanged}/>
+            <UsersSearchForm onFilterChanged={props.onFilterChanged}/>
             <Paginator currentPage={currentPage}
                        onPageChanged={onPageChanged}
                        totalItemsCount={totalItemsCount}

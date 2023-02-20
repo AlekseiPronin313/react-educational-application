@@ -2,29 +2,35 @@ import React from "react";
 import {Field, Form, Formik} from "formik";
 import {FilterType} from "../../redux/users-reducer";
 
-const userSerchFormValidate = (values: any) => {
+const userSearchFormValidate = (values: any) => {
     const errors = {};
     return errors;
 }
+
 type PropsType = {
     onFilterChanged: (filter: FilterType) => void
 }
-export const UsersSerchForm: React.FC<PropsType> = (props) => {
+export const UsersSearchForm: React.FC<PropsType> = React.memo((props) => {
 
     const submit = (values: FilterType, {setSubmitting}: { setSubmitting: (setSubmitting: boolean) => void }) => {
         props.onFilterChanged(values)
         setSubmitting(false)
     }
 
-    return <div >
+    return <div>
         <Formik
-            initialValues={{term: ''}}
-            validate={userSerchFormValidate}
+            initialValues={{term: '', friend: null}}
+            validate={userSearchFormValidate}
             onSubmit={submit}
         >
             {({isSubmitting}) => (
                 <Form>
                     <Field type="text" name="term"/>
+                    <Field name='friend' as='select'>
+                        <option value='null'>All</option>
+                        <option value='true'>Only followed</option>
+                        <option value='false'>Only unfollowed</option>
+                    </Field>
                     <button type="submit" disabled={isSubmitting}>
                         Find
                     </button>
@@ -32,4 +38,4 @@ export const UsersSerchForm: React.FC<PropsType> = (props) => {
             )}
         </Formik>
     </div>
-}
+})
