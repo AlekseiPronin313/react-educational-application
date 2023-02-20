@@ -5,6 +5,7 @@ import {Dispatch} from "redux";
 import {userAPI} from "../api/users-api";
 
 export type InitialStateType = typeof initialState
+export type FilterType = typeof initialState.filter
 type ThunkType = BaseThunkType<ActionsTypes>
 type ActionsTypes = InferActionsType<typeof actions>
 
@@ -14,7 +15,10 @@ const initialState = {
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,
-    followingInProgress: [] as Array<number> //array of users id
+    followingInProgress: [] as Array<number>, //array of users id
+    filter: {
+        term: ''
+    }
 }
 
 const usersReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
@@ -49,6 +53,8 @@ const usersReducer = (state = initialState, action: ActionsTypes): InitialStateT
                 ...state,
                 isFetching: action.isFetching
             }
+        case 'SET_FILTER':
+            return {...state, filter: action.payload}
         case 'TOGGLE_IS_FOLLOWING_PROGRESS':
             return {
                 ...state,
@@ -66,6 +72,7 @@ export const actions = {
     unfollowSuccess: (userId: number) => ({type: 'UNFOLLOW', userId} as const),
     setUsers: (users: Array<UserType>) => ({type: 'SET_USERS', users} as const),
     setCurrentPage: (currentPage: number) => ({type: 'SET_CURRENT_PAGE', currentPage} as const),
+    setFilter: (term: string) => ({type: 'SET_FILTER', payload: {term}} as const),
     setTotalUsersCount: (totalUsersCount: number) => ({
         type: 'SET_TOTAL_USERS_COUNT', count: totalUsersCount} as const),
     toggleIsFetching: (isFetching: boolean) => ({type: 'TOGGLE_IS_FETCHING', isFetching} as const),
@@ -73,11 +80,13 @@ export const actions = {
         type: 'TOGGLE_IS_FOLLOWING_PROGRESS', isFetching, userId} as const),
 }
 
-export const requestUsers = (page: number, pageSize: number): ThunkType => {
+export const requestUsers = (page: number, pageSize: number, term: string): ThunkType => {
     return async (dispatch: Dispatch<ActionsTypes>) => {
         dispatch(actions.toggleIsFetching(true))
         dispatch(actions.setCurrentPage(page))
-        const data = await userAPI.getUsers(page, pageSize)
+        dispatch(actions.setFilter(term))
+
+        const data = await userAPI.getUsers(page, pageSize, term)
         dispatch(actions.toggleIsFetching(false))
         dispatch(actions.setUsers(data.items))
         dispatch(actions.setTotalUsersCount(data.totalCount))
