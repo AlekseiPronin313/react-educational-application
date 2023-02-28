@@ -12,10 +12,10 @@ import {compose} from "redux";
 import Preloader from "./common/Preloader/Preloader";
 import store, {AppStateType} from "../redux/redux-store";
 import {initializeApp} from "../redux/app-reducer";
+import UsersPage from "./Users/UsersPage";
+import Login from "./Login/Login";
 
 const DialogsContainer = React.lazy(() => import('./Dialogs/DialogsContainer'));
-const UsersPage = React.lazy(() => import('./Users/UsersPage'));
-const Login = React.lazy(() => import('./Login/Login'));
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
 type DispatchPropsType = {
