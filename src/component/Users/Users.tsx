@@ -5,23 +5,27 @@ import User from "./User";
 import {UserType} from "../../types/types";
 import {UsersSearchForm} from "./UsersSeachForm";
 import {FilterType} from "../../redux/users-reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {getCurrentPage, getPageSize, getTotalUsersCount} from "../../redux/users-selectors";
 
 type PropsType = {
-    currentPage: number
     onPageChanged: (pageNumber: number) => void
     onFilterChanged: (filter: FilterType) => void
-    totalItemsCount: number
-    pageSize: number
     users: Array<UserType>
     followingInProgress: Array<number>
     unfollow: (userId: number) => void
     follow: (userId: number) => void
 }
 
-const Users: React.FC<PropsType> = ({
-                                        currentPage, onPageChanged, totalItemsCount,
-                                        pageSize, users, ...props
-                                    }) => {
+const Users: React.FC<PropsType> = ({onPageChanged, users, ...props}) => {
+    const dispatch = useDispatch()
+
+    const totalItemsCount = useSelector(getTotalUsersCount)
+    const currentPage = useSelector(getCurrentPage)
+    const pageSize = useSelector(getPageSize)
+
+
+
     return (
         <div className={Style.users}>
             <UsersSearchForm onFilterChanged={props.onFilterChanged}/>
