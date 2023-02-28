@@ -14,7 +14,7 @@ import store, {AppStateType} from "../redux/redux-store";
 import {initializeApp} from "../redux/app-reducer";
 
 const DialogsContainer = React.lazy(() => import('./Dialogs/DialogsContainer'));
-const UsersContainer = React.lazy(() => import('./Users/UsersContainer'));
+const UsersPage = React.lazy(() => import('./Users/UsersPage'));
 const Login = React.lazy(() => import('./Login/Login'));
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
@@ -55,7 +55,7 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
                             <Route path='/dialogs' element={<DialogsContainer/>}/>
                             <Route path='/news' element={<News/>}/>
                             <Route path='/music' element={<Music/>}/>
-                            <Route path='/users' element={<UsersContainer/>}/>
+                            <Route path='/users' element={<UsersPage/>}/>
                             <Route path='/settings' element={<Settings/>}/>
                             <Route path='/login' element={<Login/>}/>
                         </Routes>
