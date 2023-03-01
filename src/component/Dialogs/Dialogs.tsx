@@ -3,27 +3,27 @@ import Style from './Dialogs.module.scss'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import LoginReduxForm from "./DialogsForm";
-import {InitialStateType} from "../../redux/dialogs-reducer";
-
-type PropsType = {
-    dialogsPage: InitialStateType
-    sendMessage: (messageText: string) => void
-}
+import {useDispatch, useSelector} from "react-redux";
+import {AppStateType} from "../../redux/redux-store";
+import {actions} from "../../redux/dialogs-reducer";
 
 export type NewMessageFormType = {
     dialogs: string
 }
 
-const Dialogs: React.FC<PropsType> = (props) => {
+const Dialogs: React.FC = () => {
+    const dispatch = useDispatch()
+    const dialogsPage = useSelector((state: AppStateType) => state.dialogsPage)
+
 
     const addNewMessage = (values: NewMessageFormType) => {
-        props.sendMessage(values.dialogs)
+        dispatch(actions.sendMessage(values.dialogs))
     }
 
-    const message = [...props.dialogsPage.messages]
+    const message = [...dialogsPage.messages]
         .map(message => <Message key={message.id} message={message.message}/>)
 
-    const dialogs = [...props.dialogsPage.dialogs]
+    const dialogs = [...dialogsPage.dialogs]
         .map(dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id}/>)
 
     return (
