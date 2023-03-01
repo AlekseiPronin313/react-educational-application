@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Navigate} from "react-router-dom";
 import {AppStateType} from "../../redux/redux-store";
+import {AnyAction} from "redux";
 
 export interface LoginFormValuesType {
     email: string
@@ -19,8 +20,7 @@ const Login: React.FC = () => {
     const dispatch = useDispatch()
 
     const onSubmit = (formData: LoginFormValuesType) => {
-        // @ts-ignore
-        dispatch(login(formData.email, formData.password, formData.rememberMe, formData.captcha))
+        dispatch(login(formData.email, formData.password, formData.rememberMe, formData.captcha) as unknown as AnyAction)
     }
 
     if(isAuth) {

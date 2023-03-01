@@ -14,6 +14,7 @@ import {
     getUsers,
     getUsersFilter
 } from "../../redux/users-selectors";
+import {AnyAction} from "redux";
 
 type PropsType = {
 
@@ -30,25 +31,20 @@ const Users: React.FC<PropsType> = ( props) => {
     const followingInProgress = useSelector(getFollowingInProgress)
 
     useEffect(() => {
-        // @ts-ignore
-        dispatch(requestUsers(currentPage, pageSize, filter))
+        dispatch(requestUsers(currentPage, pageSize, filter) as unknown as AnyAction)
     }, [])
     const unfollow = (userId: number) => {
-        // @ts-ignore
-        dispatch(unfollow(userId))
+        dispatch(unfollow(userId) as unknown as AnyAction)
     }
     const follow = (userId: number) => {
-        // @ts-ignore
-        dispatch(follow(userId))
+        dispatch(follow(userId) as unknown as AnyAction)
     }
     const onPageChanged = (pageNumber: number) => {
-        // @ts-ignore
-        dispatch(requestUsers(pageNumber, pageSize, filter))
+        dispatch(requestUsers(pageNumber, pageSize, filter) as unknown as AnyAction)
     }
 
     const onFilterChanged = (filter: FilterType) => {
-        // @ts-ignore
-        dispatch(requestUsers(1, pageSize, filter))
+        dispatch(requestUsers(1, pageSize, filter) as unknown as AnyAction)
     }
 
     return (
