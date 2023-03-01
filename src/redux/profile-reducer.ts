@@ -23,7 +23,7 @@ const profileReducer = (state = initialState, action: ActionsTypes): InitialStat
     switch (action.type) {
         case 'ADD_POST':
             let newPost = {
-                id: 5,
+                id: state.posts.length + 1,
                 message: action.newPostText,
                 likesCount: 0
             }
