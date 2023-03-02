@@ -15,13 +15,13 @@ import {
     getUsersFilter
 } from "../../redux/users-selectors";
 import {AnyAction} from "redux";
+import {useSearchParams} from "react-router-dom";
 
-type PropsType = {
+type PropsType = {}
 
-}
-
-const Users: React.FC<PropsType> = ( props) => {
+const Users: React.FC<PropsType> = (props) => {
     const dispatch = useDispatch()
+    const [searchParams, setSearchParams] = useSearchParams()
 
     const users = useSelector(getUsers)
     const totalItemsCount = useSelector(getTotalUsersCount)
@@ -31,8 +31,45 @@ const Users: React.FC<PropsType> = ( props) => {
     const followingInProgress = useSelector(getFollowingInProgress)
 
     useEffect(() => {
-        dispatch(requestUsers(currentPage, pageSize, filter) as unknown as AnyAction)
+        const result: any = {}
+        // @ts-ignore
+        for (const [key, value] of searchParams.entries()) {
+            let value2: any = +value
+            if (isNaN(value2)) {
+                value2 = value
+            }
+            if (value === 'true') {
+                value2 = true
+            } else if (value === 'false') {
+                value2 = false
+            }
+            result[key] = value2
+        }
+
+        let actualPage = result.page || currentPage
+        let term = result.term || filter.term
+
+        let friend = result.friend || filter.friend
+        if (result.friend === false) {
+            friend = result.friend
+        }
+
+        const actualFilter = {friend, term}
+        dispatch(requestUsers(actualPage, pageSize, actualFilter) as unknown as AnyAction)
     }, [])
+
+    useEffect(() => {
+        const term = filter.term
+        const friend = filter.friend
+
+        let urlQuery =
+            (term === '' ? '' : `&term=${term}`)
+            + (friend === null ? '' : `&friend=${friend}`)
+            + (currentPage === 1 ? '' : `&page=${currentPage}`)
+
+        setSearchParams(urlQuery)
+    }, [filter, currentPage])
+
     const unfollow = (userId: number) => {
         dispatch(unfollow(userId) as unknown as AnyAction)
     }
