@@ -14,6 +14,7 @@ import store, {AppStateType} from "../redux/redux-store";
 import {initializeApp} from "../redux/app-reducer";
 import UsersPage from "./Users/UsersPage";
 import Login from "./Login/Login";
+import ChatPage from "../pages/Chat/ChatPage";
 
 const DialogsContainer = React.lazy(() => import('./Dialogs/DialogsContainer'));
 
@@ -58,6 +59,7 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
                             <Route path='/users' element={<UsersPage/>}/>
                             <Route path='/settings' element={<Settings/>}/>
                             <Route path='/login' element={<Login/>}/>
+                            <Route path='/chat' element={<ChatPage/>}/>
                         </Routes>
                     </Suspense>
                 </div>

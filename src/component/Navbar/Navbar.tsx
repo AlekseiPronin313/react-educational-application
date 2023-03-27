@@ -8,6 +8,7 @@ const Navbar: React.FC = () => {
             <div className={Style.box}>
                 <NavLink className={({isActive}) => isActive ? `${Style.active}` : `${Style.link}` } to='/profile'>Profile</NavLink>
                 <NavLink className={({isActive}) => isActive ? `${Style.active}` : `${Style.link}` } to='/dialogs'>Messages</NavLink>
+                <NavLink className={({isActive}) => isActive ? `${Style.active}` : `${Style.link}` } to='/chat'>Chat</NavLink>
                 <NavLink className={({isActive}) => isActive ? `${Style.active}` : `${Style.link}` } to='/news'>News</NavLink>
                 <NavLink className={({isActive}) => isActive ? `${Style.active}` : `${Style.link}` } to='/music'>Music</NavLink>
                 <NavLink className={({isActive}) => isActive ? `${Style.active}` : `${Style.link}` } to='/users'>Find users</NavLink>
