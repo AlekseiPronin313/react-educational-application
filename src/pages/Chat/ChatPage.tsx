@@ -19,15 +19,21 @@ const Chat: React.FC = () => {
     const [wsChannel, setWsChannel] = useState<WebSocket | null>(null)
 
     useEffect(() => {
+        let ws: WebSocket
+        const closeHandler = () => {
+            setTimeout(createChannel, 3000)
+        }
         function createChannel() {
-            const ws = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx');
-            ws.addEventListener('close', () => {
-                setTimeout(createChannel, 3000)
-            })
+            ws = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx');
+            ws.addEventListener('close', closeHandler)
             setWsChannel(ws)
         }
-
         createChannel()
+
+        return () => {
+            ws.removeEventListener('close', closeHandler)
+            ws.close()
+        }
     }, [])
 
     return (
@@ -41,10 +47,14 @@ const Chat: React.FC = () => {
 const Messages: React.FC<{ wsChannel: WebSocket | null }> = ({wsChannel}) => {
     const [messages, setMessages] = useState<ChatMessageType[]>([])
     useEffect(() => {
-        wsChannel?.addEventListener('message', (e) => {
+        const messageHandler = (e: MessageEvent) => {
             const newMessages = JSON.parse(e.data);
             setMessages((prevMessages) => [...prevMessages, ...newMessages])
-        })
+        };
+        wsChannel?.addEventListener('message', messageHandler)
+        return () => {
+            wsChannel?.removeEventListener('message', messageHandler)
+        }
     }, [wsChannel])
     return (
         <div style={{height: '500px', overflowY: 'auto'}}>
@@ -70,9 +80,13 @@ const AddMessageForm: React.FC<{ wsChannel: WebSocket | null }> = ({wsChannel}) 
     const [readyStatus, setReadyStatus] = useState<'pending' | 'ready'>('pending')
 
     useEffect(() => {
-        wsChannel?.addEventListener('open', () => {
+        const openHandler = () => {
             setReadyStatus('ready')
-        })
+        };
+        wsChannel?.addEventListener('open', openHandler)
+        return () => {
+            wsChannel?.removeEventListener('open', openHandler)
+        }
     }, [wsChannel])
 
     const sendMessage = () => {
