@@ -58,13 +58,13 @@ const Messages: React.FC = () => {
     }, [messages])
     return (
         <div style={{height: '500px', overflowY: 'auto'}} onScroll={scrollHandler}>
-            {messages.map((m: any, index) => <Message key={index} message={m}/>)}
+            {messages.map((m: any) => <Message key={m.id} message={m}/>)}
             <div ref={messagesAnchorRef}></div>
         </div>
     )
 }
 
-const Message: React.FC<{ message: ChatMessageType }> = ({message}) => {
+const Message: React.FC<{ message: ChatMessageType }> = React.memo(({message}) => {
     return (
         <div>
             <img style={{width: '40px'}} src={message.photo} alt={'img'}/>
@@ -74,7 +74,7 @@ const Message: React.FC<{ message: ChatMessageType }> = ({message}) => {
             <hr/>
         </div>
     )
-}
+})
 
 const AddMessageForm: React.FC = () => {
     const [message, setMessage] = useState('')
