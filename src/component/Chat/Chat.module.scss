@@ -1,0 +1,61 @@
+.messages {
+  height: 500px;
+  overflow-y: auto;
+}
+
+.chatMassage {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0 10px 10px;
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 14px;
+}
+
+.img {
+  width: 50px;
+  border-radius: 50%;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 18px;
+}
+
+.text {
+  margin: 0 0 0 7px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.container {
+  margin-top: 7px;
+  display: flex;
+  gap: 20px;
+}
+
+.input {
+  min-height: 40px;
+  width: 30%;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  border-radius: 20px;
+  padding: 10px 0 0 10px;
+  box-sizing: border-box;
+}
+
+.button {
+  height: 40px;
+  width: 100px;
+  border-radius: 20px;
+  cursor: pointer;
+}
